@@ -797,8 +797,12 @@ Returns a detailed information about deposit of authenticated user.
                 ]
             }
         
-## My deposit history [/api/1.0/accounts/my/deposit/history]
+## My deposit history [/api/1.0/accounts/my/deposit/history{?limit,offset}]
 <a name="my_deposit_history"></a>
+
++ Parameters 
+    + limit (optional, int,   `50`)...If a limit count is given, no more than that many results will be returned (but possibly less, if there is less results). Default value of 10 will be used when limit is omitted.
+    + offset (optional, int, `10` )...Offset says to skip that many results before beginning to return results. Default value of 0 will be used when offset is omitted.
 
 ### Get my deposit history [GET]
 Returns a detailed information about history of deposit flow of authenticated user.
