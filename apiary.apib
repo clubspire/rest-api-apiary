@@ -11612,9 +11612,10 @@ For more information on services follow the subsections:
 ### Voucher (object)
 + voucherId (string) - Unique identificator of the voucher.
 + value (number) - Total value of the voucher.
++ currency (string) - International code of the currency for this value.
 + validFrom (string) - Date and time since which the voucher is applicable.
 + validUntil (string) - Date and time until which the voucher is applicable.
-+ person (string) - Name that will be diplayed on the voucher.
++ personName (string) - Name that will be diplayed on the voucher.
 + note (string) - A note to be append to the voucher.
 + register (boolean) - If true, the value of the `voucher` will billed to the currently authenticated user and substracted from their deposit.
 
@@ -13017,6 +13018,8 @@ For more information on services follow the subsections:
             {
                 "voucherId": "001",
                 "value": "10",
+                "currency": "CZK",
+                "personName": "Test Person",
                 "validFrom": "2018-08-28T13:35:00.000+0100",
                 "validUntil": "2018-08-29T13:35:00.000+0100",
                 "note": "Created via Rest",
