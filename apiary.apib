@@ -14,6 +14,7 @@ For more information on authentication and services follow the subsections:
 + [Instructors](#instructors)
 + [Schedules](#schedules)
 + [Reservations](#reservations)
++ [Entrance](#entrance)
 + [Users](#users)
 + [FCM notifications](#fcm_notifications)
 + [Settings](#settings)
@@ -10021,6 +10022,50 @@ Returns [paginated list](#responsePaginated) of historic reservations of authent
                   "previousPageHref": null
                   "nextPageHref": "https://reservation.grandrelax.cz/api/1.0/reservations/my/actual?offset=10&limit=10"
               }
+
+# Group Entrance
+<a name="entrance"></a>
+
++ [Get occupancy of entrance object](#entrance_occupancy)
+
+## Occupancy of entrance object [/api/1.0/entrance/occupancy{?objectid}]
+<a name="entrance_occupancy"></a>
+
++ Parameters 
+    + objectid (required, string, `4b83215d7f0001016bd6e8c57a38d4ec`)...Id of entry object
+    
+### Get occupancy of entrance object [GET]
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+
++ Response 200 (application/json)
+
+    + Attributes (ObjectOccupancy)
+    
+    + Body
+
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "capacity": 10,
+                        "occupancy": 4
+                    }
+                ]
+            }
+
               
 # Group Users
 <a name="users"></a>
@@ -11215,6 +11260,10 @@ For more information on services follow the subsections:
 + oldPassword (string, optional) - Actual password of authenticated user.
 + password1 (string, optional) - New password of authenticated user in plaintext.
 + password2 (string, optional) - New Password for the user in plaintext again. Must be the same as `password`. Is required if password is not `null`.
+
+### ObjectOccupancy (object)
++ capacity (number) - Capacity of object
++ occupancy (number) - Actual occupancy of object
 
 ### UserProfile (object)
 + name (string) - Name of the authenticated user.
