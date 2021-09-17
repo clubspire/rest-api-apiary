@@ -10563,7 +10563,8 @@ Returns personal information of authenticated user.
                         "note": "goes to fitness 2/week",
                         "birthDate": "1988-12-04",
                         "termsAccepted": false,
-                        "login": "ondra"
+                        "login": "ondra",
+                        "customerId": "51f1fdcac0a800c851be221a0e5c01ea"
                     }
                 ]
             }
@@ -10612,7 +10613,8 @@ Update personal information of authenticated user.
                         "note": "goes to fitness 2/week",
                         "birthDate": "1988-12-04",
                         "termsAccepted": false,
-                        "login": "ondra"
+                        "login": "ondra",
+                        "customerId": "51f1fdcac0a800c851be221a0e5c01ea"
                     }
                 ]
             }
@@ -11260,6 +11262,7 @@ For more information on services follow the subsections:
 + oldPassword (string, optional) - Actual password of authenticated user.
 + password1 (string, optional) - New password of authenticated user in plaintext.
 + password2 (string, optional) - New Password for the user in plaintext again. Must be the same as `password`. Is required if password is not `null`.
++ customerId (string) - Customer id for the authenticated user.
 
 ### ObjectOccupancy (object)
 + capacity (number) - Capacity of object
@@ -11281,6 +11284,7 @@ For more information on services follow the subsections:
 + note (string) - Note with additional information about the authenticated user.
 + termsAccepted (boolean) - Determines wheter the user accepts the terms and conditions of the club.
 + login (string) - Login name for the authenticated user. Never `null`.
++ customerId (string) - Customer id for the authenticated user.
 
 ### NewUser (object)
 + name (string, optional) -  Name of the new user.
