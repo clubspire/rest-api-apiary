@@ -7201,7 +7201,8 @@ For more information on services follow the subsections:
 + [Refresh reservation form v. 1.1](#refresh_reservation_form_1.1)
 + [Create reservation](#create_reservation)
 + [Reservation detail v. 1.0](#reservation_detail_1.0)
-+ [Reservation detail v 1.1](#reservation_detail_1.0)
++ [Reservation detail v 1.1](#reservation_detail_1.1)
++ [Reservation detail by access code](#reservation_detail_by_access_code)
 + [Edit reservation](#edit_reservation)
 + [Cancel reservation](#cancel_reservation)
 + [Pay reservation by deposit](#pay_reservation_by_deposit)
@@ -8772,7 +8773,7 @@ If some error occurs during retreiving reservation data error message is returne
             }
             
 ## Reservation detail by access code [/api/1.1/reservations/code/{accessCode}]
-<a name="reservation_detail_1.1"></a>
+<a name="reservation_detail_by_access_code"></a>
 
 + Parameters
   + accessCode (required, string, `6250084`)...Access code of the reservation to retrieve.
@@ -8785,7 +8786,7 @@ Returns two elements:
 
 If some error occurs during retreiving reservation data error message is returned to the caller. For complete list of error codes and their meanings see [Response messages](#response_messages9).
 
-<a name="response_messages9"></a>
+<a name="response_messages_reservation_by_access_code"></a>
 #### Response messages
 | Code                          | Type      | Description                                                                                                                  |
 |-------------------------------|:----------|:-----------------------------------------------|
