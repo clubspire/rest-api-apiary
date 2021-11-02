@@ -8597,6 +8597,7 @@ If some error occurs during retreiving reservation data error message is returne
 | Code                          | Type      | Description                                                                                                                  |
 |-------------------------------|:----------|:-----------------------------------------------|
 |`error.reservation.find.failed`|ERROR_FATAL|Returned if provided reservation does not exist.|
+|`error.reservation.notOwner`   |ERROR_FATAL|Returned if authenticated user is not the owner of reservation.|
 
 + Request (application/json)
 
@@ -8728,7 +8729,200 @@ If some error occurs during retreiving reservation data error message is returne
                       "mediaType": "application/json"
                     },
                     "id": "63b1c1a1c0a802020096a2e19b9a312f",
-                    "code": null,
+                    "code": "6250084",
+                    "sportId": "657e4981c0a833327a909674fa3f39e9",
+                    "objectId": "001001b2c0a8463200b51e51f060009f",
+                    "tabIndex": 2,
+                    "instructorId": "-1",
+                    "occupancyId": "63b1c152c0a8020201c7a35522781744",
+                    "note": "",
+                    "personCount": 1,
+                    "price": {
+                      "currencyCode": "CZK",
+                      "price": 100,
+                      "unitPrice": 100,
+                      "chargedForPersonCount": true,
+                      "chargedForLengthMinutes": null
+                    },
+                    "canceledDate": null,
+                    "paidDate": null,
+                    "createdDate": "2017-01-03T10:38:30.945+0100",
+                    "startTime": "2017-01-03T19:15:00.000+0100",
+                    "endTime": "2017-01-03T20:15:00.000+0100",
+                    "cancelFee": null,
+                    "waitingCancelFee": null,
+                    "canceledWithoutFee": false,
+                    "emailNotificationBeforeMinutes": null,
+                    "smsNotificationBeforeMinutes": null,
+                    "psuhNotificationBeforeMinutes": null,
+                    "state": "UNPAID",
+                    "paymentType": null,
+                    "substitute": false,
+                    "substituteForAnyObjectOfAreal": false,
+                    "createReservationFromSubstitute": false,
+                    "substituteAcceptanceMinutesBefore": 0,
+                    "substituteEmailNotification": false,
+                    "substituteSmsNotification": false,
+                    "substitutePushNotification": false,
+                    "temporary": false,
+                    "temporaryValidTo": null
+                  }
+                }
+              ]
+            }
+            
+## Reservation detail by access code [/api/1.1/reservations/code/{accessCode}]
+<a name="reservation_detail_1.1"></a>
+
++ Parameters
+  + accessCode (required, string, `6250084`)...Access code of the reservation to retrieve.
+
+### Get reservation detail by access code [GET]
+
+Returns two elements:
++ ReservationForm - object encapsulating reservation settings, restrictions and limits
++ Reservation - existing reservation data
+
+If some error occurs during retreiving reservation data error message is returned to the caller. For complete list of error codes and their meanings see [Response messages](#response_messages9).
+
+<a name="response_messages9"></a>
+#### Response messages
+| Code                          | Type      | Description                                                                                                                  |
+|-------------------------------|:----------|:-----------------------------------------------|
+|`error.reservation.find.failed`|ERROR_FATAL|Returned if provided reservation does not exist.|
+|`error.reservation.notOwner`   |ERROR_FATAL|Returned if authenticated user is not the owner of reservation.|
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+  
++ Response 200 (application/json)
+
+    + Attributes (object)
+        + reservationForm(ReservationForm)
+        + reservation(Reservation)
+
+    + Body
+    
+            {
+              "message": {
+                "httpStatus": 200,
+                "type": "INFO",
+                "code": null,
+                "clientMessage": null,
+                "verboseMessage": null,
+                "docUri": null
+              },
+              "data": [
+                {
+                  "metaInfo": null,
+                  "reservationForm": {
+                    "metaInfo": null,
+                    "sports": [
+                      {
+                        "id": "657e4981c0a833327a909674fa3f39e9",
+                        "name": "Pilates",
+                        "instructors": [
+                          {
+                            "metaInfo": {
+                              "href": "https://192.168.0.242:58443/api/1.1/instructors/-1",
+                              "mediaType": "application/json"
+                            },
+                            "id": "-1",
+                            "firstName": null,
+                            "lastName": null,
+                            "email": null,
+                            "phoneNumber": null,
+                            "info": null,
+                            "colorRgbHex": "3366CC",
+                            "photoHref": null,
+                            "activities": null
+                          }
+                        ],
+                        "activity": null
+                      }
+                    ],
+                    "selectedSport": {
+                      "id": "657e4981c0a833327a909674fa3f39e9",
+                      "name": "Pilates",
+                      "instructors": [
+                        {
+                          "metaInfo": {
+                            "href": "https://192.168.0.242:58443/api/1.1/instructors/-1",
+                            "mediaType": "application/json"
+                          },
+                          "id": "-1",
+                          "firstName": null,
+                          "lastName": null,
+                          "email": null,
+                          "phoneNumber": null,
+                          "info": null,
+                          "colorRgbHex": "3366CC",
+                          "photoHref": null,
+                          "activities": null
+                        }
+                      ],
+                      "activity": {
+                        "metaInfo": {
+                          "href": "https://192.168.0.242:58443/api/1.1/activities/86d5c751c0a8006701c9045133fe1b81",
+                          "mediaType": "application/json"
+                        },
+                        "id": "86d5c751c0a8006701c9045133fe1b81",
+                        "name": "Cvičení",
+                        "description": "",
+                        "icon": {
+                          "metaInfo": {
+                            "href": "https://192.168.0.242:58443/media/images/pictograms/a_08_b.png",
+                            "mediaType": "application/json"
+                          },
+                          "id": "a_08",
+                          "nameBlack": "a_08_b.png",
+                          "nameGrey": "a_08_w.png",
+                          "nameWhite": "a_08_g.png"
+                        },
+                        "instructors": null,
+                        "timeLineType": "TIME_LINE_WEEK",
+                        "tabIndex": 0
+                      }
+                    },
+                    "freeCapacity": 15,
+                    "lengthEditable": false,
+                    "sportEditable": false,
+                    "instructorEditable": false,
+                    "personCountEditable": true,
+                    "reservationEditable": true,
+                    "reservationCancelable": true,
+                    "waitingCancelEnabled": true,
+                    "paymentEnabled": true,
+                    "orderEnabled": true,
+                    "editFee": null,
+                    "cancelFee": {
+                      "currencyCode": "CZK",
+                      "price": 50
+                    },
+                    "lengthIncrementMinutes": null,
+                    "minLengthMinutes": 60,
+                    "maxLengthMinutes": 60,
+                    "placeName": "Učebna 5 - Žlutý sál",
+                    "reservationShared": false,
+                    "emailNotificationEnabled": true,
+                    "smsNotificationEnabled": false,
+                    "pushNotificationEnabled": false,
+                    "createReservationFromSubstituteEnabled": false,
+                    "justNotifySubstituteEnabled": false,
+                    "substituteEmailNotificationEnabled": false,
+                    "substituteSmsNotifcationEnabled": false,
+                    "substitutePushNotifcationEnabled": false
+                  },
+                  "reservation": {
+                    "metaInfo": {
+                      "href": "https://192.168.0.242:58443/api/1.1/reservations/63b1c1a1c0a802020096a2e19b9a312f",
+                      "mediaType": "application/json"
+                    },
+                    "id": "63b1c1a1c0a802020096a2e19b9a312f",
+                    "code": "6250084",
                     "sportId": "657e4981c0a833327a909674fa3f39e9",
                     "objectId": "001001b2c0a8463200b51e51f060009f",
                     "tabIndex": 2,
