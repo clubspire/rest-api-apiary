@@ -7595,7 +7595,9 @@ If invalid data is provided error message is returned to the caller. For complet
                     "justNotifySubstituteEnabled": false,
                     "substituteEmailNotificationEnabled": false,
                     "substituteSmsNotificationEnabled": false,
-                    "substitutePushNotificationEnabled": false
+                    "substitutePushNotificationEnabled": false,
+                    "slevomatEnabled": false,
+                    "editForm": false
                   },
                   "reservation": {
                     "metaInfo": null,
@@ -7607,6 +7609,7 @@ If invalid data is provided error message is returned to the caller. For complet
                     "instructorId": "-1",
                     "occupancyId": null,
                     "note": null,
+                    "voucherCode": null,
                     "personCount": 1,
                     "price": {
                       "currencyCode": "CZK",
@@ -7637,7 +7640,7 @@ If invalid data is provided error message is returned to the caller. For complet
                     "substitutePushNotification": false,
                     "temporary": false,
                     "temporaryValidTo": null
-                  }
+                    }
                 }
               ]
             }
@@ -8045,6 +8048,7 @@ If invalid data is provided error message is returned to the caller. For complet
                     "instructorId": "-1",
                     "occupancyId": null,
                     "note": null,
+                    "voucherCode": null,
                     "personCount": 8,
                     "price": {
                       "currencyCode": "CZK",
@@ -10981,7 +10985,8 @@ Method returns all necessary settings to ensure compatibility with the connected
                         "membershipCanBePaidWithDepositEnabled": true,
                         "pushNotificationsAllowed": true,
                         "createReservationOrderEnabled": true,
-                        "showFreeCapacityAsText": true
+                        "showFreeCapacityAsText": true,
+                        "depositPayableByEpaymentEnabled": true
                     }
                 ]
             }
@@ -11393,6 +11398,7 @@ For more information on services follow the subsections:
 + pushNotificationsAllowed (boolean)
 + createReservationOrderEnabled (boolean)
 + showFreeCapacityAsText (boolean)
++ depositPayableByEpaymentEnabled (boolean)
 
 ### User credentials authorization (object)
 + `grant_type` (required, string) - Value MUST be set to "password".
@@ -11583,6 +11589,7 @@ For more information on services follow the subsections:
 + lengthIncrementMinutes (number) - If `ReservationForm.lengthIncrementMinutes` is `true` this is an increment, in minutes, that can be used to extend the reservation. Total length of the reservation, in minutes, must be divisible by the increment without a reminder. Can be `null` if reservation can be extended by any increment.
 + minLengthMinutes (number) - Minimal length of the reservation in minutes.
 + maxLengthMinutes (number) - Maximal length of the reservation in minutes.
++ defaultLength (number) - Default length of the reservation in minutes.
 + placeName (string) - Name of object where reservation takes place. 
 + reservationShared (boolean) - Whether the reservation is shared by more customers or not. `true` if reservation is shared, `false` otherwise.
 + emailNotificationEnabled (boolean) - Whether email notifications are enabled by the club. `true` if email notifications are enabled, `false` otherwise. 
@@ -11593,6 +11600,8 @@ For more information on services follow the subsections:
 + substituteEmailNotificationEnabled (boolean) - Whether email notification for substitutes are enabled or not. `true` if email notification about free place for substitute is enabled, `false` otherwise.
 + substituteSmsNotificationEnabled (boolean) - Whether SMS notification for substitutes are enabled or not. `true` if SMS notification about free place for substitute is enabled, `false` otherwise.
 + substitutePushNotificationEnabled (boolean) - Whether push notifications for substitutes are enabled or not. `true` if push notification about free place for substitute is enabled, `false` otherwise.
++ slevomatEnabled (boolean) - Whether is Slevomat module enabled.
++ editForm (boolean) - Whether is this object used for edit reservation. 
 
 ### CreateReservation (object)
 + instructorId (string, required) - Id of selected instructor for the reservation.
@@ -11626,6 +11635,7 @@ For more information on services follow the subsections:
 + instructorId (string) - Id of selected instructor who teaches the sport.
 + occupancyId (string) - Id of the place booked by customer. Allways `null` for new reservation.
 + note (string) - Additional information for reservation.
++ voucherCode (string) - Slevomat voucher code.
 + personCount (number) - Number of places that should be booked.
 + price (Price) - Price for the reservation. 
 + canceledDate (string) - Date and time when the reservation was canceled. Always `null` for new reservation. See [JSON date serialization](#serialization) for detailed information about date formats. 
