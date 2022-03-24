@@ -18,6 +18,7 @@ For more information on authentication and services follow the subsections:
 + [Users](#users)
 + [FCM notifications](#fcm_notifications)
 + [Settings](#settings)
++ [Mobile application update](#mobile_app_update)
 + [Tabs](#tabs)
 
 ## Group Security
@@ -10991,6 +10992,139 @@ Method returns all necessary settings to ensure compatibility with the connected
                 ]
             }
 
+# Group Mobile application update
+<a name="mobile_app_update"></a>
+
+## Check for mobile app update [/api/1.0/update]
+<a name="check_for_update"></a> 
+
+### Check for mobile app update [POST]
+
+Method returns informations about latest version of mobile application if newer version exists.
+
++ Request (application/json)
+    Request from Android application.
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+    
+    + Body
+    
+            {
+                "appVersion": "2.2.10",
+                "appId": "com.clubspire.android.crimed",
+                "appName": "crimed",
+                "deviceVersion": "11"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "response": {
+                            "isNewVersionAvailable": true,
+                            "newestVersion": "v2.2.12",
+                            "storeUrl": "https://play.google.com/store/apps/details?id=com.clubspire.android.crimed"
+                        }
+                    }
+                ]
+            }
+
++ Request (application/json)
+    Request from IOS application.
+    
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+    
+    + Body
+    
+            {
+                "appVersion": "2.6.0",
+                "appId": "1605746552",
+                "appName": "davajmakaj",
+                "deviceVersion": "9.5"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "response": {
+                            "isNewVersionAvailable": true,
+                            "newestVersion": "v2.6.1",
+                            "storeUrl": "https://apps.apple.com/tt/app/davajmakaj/id1605746552"
+                        }
+                    }
+                ]
+            }
+    
++ Request (application/json)
+    Request from IOS application with response when there is no new available update.
+    
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+    
+    + Body
+    
+            {
+                "appVersion": "2.6.1",
+                "appId": "1605746552",
+                "appName": "davajmakaj",
+                "deviceVersion": "9.5"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "response": {
+                            "isNewVersionAvailable": false,
+                            "newestVersion": null,
+                            "storeUrl": null
+                        }
+                    }
+                ]
+            }
+    
 # Group FCM notifications
 <a name="fcm_notifications"></a>
 For more information on services follow the subsections: 
