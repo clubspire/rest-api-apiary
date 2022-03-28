@@ -315,18 +315,20 @@ CLUBSPIRE REST API always responses with HTTP status code **200 OK**. The reason
 
 ## Localization
 
-Data returned by the CLUBSPIRE REST API can be localized to desired locale. Default locale is **cs_CZ** and can be customized for the club. If you wish to obtain data for different locale just add **lang** request parameter to your request. Currently we support these locales:
-+ cs_CZ
-+ sk_SK
-+ en_GB
-+ hu_HU
+Data returned by the CLUBSPIRE REST API can be localized to desired locale. Default locale is **cs** and can be customized for the club. If you wish to obtain data for different locale just add **lang** request parameter to your request. Currently we support these locales:
++ cs
++ sk
++ en
++ hu
++ ru
++ de
 
 ## Example of request with locale parameter 
 
-```GET https://reservation.grandrelax.cz/api/1.0/activities?lang=sk_SK HTTP/1.1
+``GET https://reservation.grandrelax.cz/api/1.0/activities?lang=sk HTTP/1.1
 Host: https://reservation.grandrelax.cz
 Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
-Content-Type: application/json```
+Content-Type: application/json``
 
 # Group Data types
 This section provides definition of general data model along with detailed information about specific data types used in responses. 
