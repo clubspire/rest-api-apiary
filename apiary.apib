@@ -16,9 +16,9 @@ For more information on authentication and services follow the subsections:
 + [Reservations](#reservations)
 + [Entrance](#entrance)
 + [Users](#users)
-+ [Firebase Cloud Messaging (FCM notifications)](#fcm_notifications)
 + [Settings](#settings)
 + [Mobile application update](#mobile_app_update)
++ [Firebase Cloud Messaging - FCM notifications](#fcm_notifications)
 + [Tabs](#tabs)
 
 ## Group Security
@@ -11083,7 +11083,7 @@ Method returns informations about latest version of mobile application if newer 
                 ]
             }
 
-# Group Firebase Cloud Messaging (FCM notifications)
+# Group Firebase Cloud Messaging - FCM notifications
 <a name="fcm_notifications"></a>
 
 For more information on services follow the subsections: 
@@ -11099,7 +11099,7 @@ For more information on services follow the subsections:
 
 + Parameters 
     + key (required, string, `545743r541sd2541rger5`)...A key granded by FCM Server.
-  
+
 ### Add FCM key [POST]
 
 
@@ -13400,41 +13400,25 @@ For more information on services follow the subsections:
                     }
                 ]
             }
-            
+
 # Group Version
 <a name="version"></a>
 For more information on services follow the subsections: 
 + [Check version is at least some](#check_version)
 
-## Create new voucher [/api/1.1/version/{version}]
+## Check version is at least some [/api/1.0/version/atLeast/{version}]
 <a name="check_version"></a>
   
-### Create voucher [POST]
+### Check version is at least some [GET]
 
 + Request (application/json)
     + Headers
     
             Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
-    + Attributes (Voucher)
     
 
 + Response 200 (application/json)
 
     + Body
     
-            {
-                "message": {
-                    "httpStatus": 200,
-                    "type": "INFO",
-                    "code": null,
-                    "clientMessage": null,
-                    "verboseMessage": null,
-                    "docUri": null
-                },
-                "data": [
-                    {
-                        "metaInfo": null,
-                        "response": null
-                    }
-                ]
-            }
+            true
