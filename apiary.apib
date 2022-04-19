@@ -10481,7 +10481,6 @@ Client application must be authenticated to call this service.
     + Body 
     
             {
-                "registrationNumber": 1234,
                 "name": "Ondra",
                 "surname" : "Novak",
                 "birthDate" : "1987-24-04",
@@ -10499,6 +10498,7 @@ Client application must be authenticated to call this service.
                 "login" : "ondra1",
                 "password": "aLl1sG0.d",
                 "passwordAgain" : "aLl1sG0.d"
+                "registrationNumber": "001234"
             }
 
 
@@ -11673,6 +11673,7 @@ For more information on services follow the subsections:
 + login (string, required) - Login name for the user. Must not be null or empty.
 + password (string, required) - Password for the user in plaintext. Must not be null or empty.
 + passwordAgain (string, required) - Password for the user in plaintext again. Must be the same as `password`.
++ registrationNumber (string, optional) -  Registration number of the new user.
 
 ### ResetPassword (object)
 + password1 (string, required) - New password in plaintext.
