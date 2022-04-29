@@ -10873,7 +10873,8 @@ Returns personal information of authenticated user which included security infor
                         "passwordAgain": null,
                         "activationToken": null,
                         "userKey": "870df6b6c0a8020201bcad4e50374009",
-                        "lastModifiedDate": "2016-11-30T19:51:21.940+0100"
+                        "lastModifiedDate": "2016-11-30T19:51:21.940+0100",
+                        "customerId": "51f1fdcac0a800c851be221a0e5c01ea"
                     }
                 ]
             }
@@ -10947,8 +10948,7 @@ Method returns all necessary settings to ensure compatibility with the connected
                         "createReservationOrderEnabled": true,
                         "showFreeCapacityAsText": true,
                         "depositPayableByEpaymentEnabled": true,
-                        "qrCodesModuleEnabled" : true,
-                        "customerId" : "51f1fdcac0a800c851be221a0e5c01ea"
+                        "qrCodesModuleEnabled" : true
                     }
                 ]
             }
@@ -11569,7 +11569,6 @@ For more information on services follow the subsections:
 + showFreeCapacityAsText (boolean)
 + depositPayableByEpaymentEnabled (boolean)
 + qrCodesModuleEnabled (boolean)
-+ customerId (string)
 
 ### User credentials authorization (object)
 + `grant_type` (required, string) - Value MUST be set to "password".
@@ -11614,6 +11613,7 @@ For more information on services follow the subsections:
 + activationToken (string)
 + userKey (string) -  Unique identifier that can be used to the user of REST API. See [USER_KEY grant type](#user_key) of OAuth2 protocol for more information.
 + lastModifiedDate (string) -  Date and time of the last modification of the user. For new user that has not been modified yet this attribute equals creation date and time. See [JSON date serialization](#serialization) for detailed information about date formats.
++ customerId (string) - Id of user.
 
 
 
