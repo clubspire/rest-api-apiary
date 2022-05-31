@@ -433,7 +433,7 @@ Returns contact information of the club.
         + logoHref (string) - Location of the club logo. URL can directly be used for getting the photo. See [club logo](#logo) for more information.
         + instagramProfileUrl (string) - URL of the club Instagram page.
         + youtubeProfileUrl (string) - URL of the club Youtube page.
-  
+
     + Body
 
             {
@@ -463,7 +463,7 @@ Returns contact information of the club.
                         "dic": "CZ1234556",
                         "logoHref": "https://reservation.grandrelax.cz/api/1.0/logo"
                         "instagramProfileUrl": "https://www.instagram.com/tereza_fl",
-                        "youtubeProfileUrl": "https://www.youtube.com/user/clubspire"
+                        "youtubeProfileUrl": "https://www.youtube.com/user/clubspire",
                     }
                 ]
             }
@@ -10286,6 +10286,7 @@ For more information on services follow the subsections:
 + [My profile](#my_profile)
 + [All users](#all_users)
 + [All users count](#all_users_count)
++ [Deactivate user account](#deactivate_user_account)
 
 ## Synchronization with external systems
 REST API provides services that can be used by external systems to synchronize data about CLUBSPIRE users. A special access role must be assigned to client application to be allowed to call these services. Currently it is only possible to retrieve users whose data has been changed since provided timestamp. For more information see [All users](#all_users) service. 
@@ -10443,6 +10444,27 @@ Method activates account, which correspond with the token included in the link.
 |`error.activation.account.invalidData`              |ERROR_FATAL|Returned if the user with activation token does not exist.|
 |`warning.activation.accountActivated`               |ERROR_FATAL|Returned if the account has been already activated. |
 |`error.activation.failed`                           |ERROR_FATAL|Returned if there was a communicating error with CS server.|
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+
++ Response 200 (application/json)
+
+## Account deactivation [/api/1.0/users/deactivateUser]
+<a name="deactivate_user_account"></a>
+
+### Deactivate account [GET]
+
+Deactivates account of currently logged user, deactivates his phone number and email. Also removes all of his push keys.  
+
+#### Response messages
+| Code                                               | Type              | Description                                                                                                                  |
+|--------------------------------------------------- |:------------------|:-----------------------------------------------|
+|`success.user.deactivated`                          |INFO               |Returned if the account has been successfully activated.|
+|`error.deactivation.failed`                         |ERROR_FATAL        |Returned if there is an error.|
 
 + Request (application/json)
 
