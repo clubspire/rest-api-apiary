@@ -14,7 +14,7 @@ For more information on authentication and services follow the subsections:
 + [Instructors](#instructors)
 + [Schedules](#schedules)
 + [Reservations](#reservations)
-+ [Entrance](#entrance)
++ [Center](#center)
 + [Users](#users)
 + [Settings](#settings)
 + [Mobile application update](#mobile_app_update)
@@ -10228,10 +10228,55 @@ Returns [paginated list](#responsePaginated) of historic reservations of authent
                   "nextPageHref": "https://reservation.grandrelax.cz/api/1.0/reservations/my/actual?offset=10&limit=10"
               }
 
-# Group Entrance
-<a name="entrance"></a>
+# Group Center
+<a name="center"></a>
 
+In this group are informations corresponding to club's **center**, like objects and current occupancy. 
+
++ [Get all objects in center](#all_objects)
 + [Get occupancy of entrance object](#entrance_occupancy)
+
+## Get all objects in center [/api/1.0/center/objects]
+<a name="entrance_occupancy"></a>
+
+### Get all objects in center [GET]
+
+    Returns id and name of all object that are currently in the center.
+    
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+
++ Response 200 (application/json)
+
+    + Attributes ()
+    
+    + Body
+
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "id": "6b57851fcaaaa16e180e9032a24ae77d",
+                        "name": "Fitness"
+                    },
+                    {
+                        "metaInfo": null,
+                        "id": "97d5da2dcda8a1aeaaa2b52bd8f387f3",
+                        "name": "Skupinové lekce (30)"
+                    }
+                ]
+            }
 
 ## Occupancy of entrance object [/api/1.0/entrance/occupancy{?objectId}]
 <a name="entrance_occupancy"></a>
@@ -10240,6 +10285,8 @@ Returns [paginated list](#responsePaginated) of historic reservations of authent
     + objectId (required, string, `4b83215d7f0001016bd6e8c57a38d4ec`)...Id of entry object
     
 ### Get occupancy of entrance object [GET]
+
+    Returns current occupancy of entrance object, blocking reservation are included in sum, temporal reservations are not.
 
 + Request (application/json)
 
@@ -10270,7 +10317,6 @@ Returns [paginated list](#responsePaginated) of historic reservations of authent
                     }
                 ]
             }
-
               
 # Group Users
 <a name="users"></a>
