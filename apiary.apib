@@ -756,12 +756,14 @@ This section documents all services providing information about account of authe
 + [Buy deposit](#buy_deposit)
 + [My season tickets](#my_season_tickets)
 + [My season tickets history](#my_season_tickets_history)
++ [Is some season ticket purchasable by customer](#some_season_ticket_purchasable_by_customer)
 + [Get all salable season tickets](#salable_season_tickets)
 + [Buy season ticket by deposit](#buy_season_ticket_by_deposit)
 + [Buy season ticket by epayment](#buy_season_ticket_by_epayment)
 + [Season ticket detail](#season_ticket_detail)
 + [My memberships](#my_memberships)
 + [My memberships history](#my_memberships_history)
++ [Is some membership purchasable by customer](#some_membership_purchasable_by_customer)
 + [Get all salable memberships](#salable_memberships)
 + [Buy membership by deposit](#buy_membership_by_deposit)
 + [Buy membership by epayment](#buy_membership_by_epayment)
@@ -1135,6 +1137,38 @@ Returns a detailed information about history of memberships of authenticated use
                   "repayments": null
                 }
               ]
+            }
+
+## Is some membership purchasable by customer [/api/1.0/accounts/my/customer-groups/new/enabled]
+<a name="some_membership_purchasable_by_customer"></a>
+### Is some membership purchasable by customer [GET]
+Checks if logged customer can buy at least one type of membership
+
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+            
++ Response 200 (application/json)
+
+    + Attributes (object) 
+        + value (boolean) - true if currently logged customer can purchase at least one type of membership
+
+    + Body
+    
+            {
+              "message": {
+                "httpStatus": 200,
+                "type": "INFO",
+                "code": null,
+                "clientMessage": null,
+                "verboseMessage": null,
+                "docUri": null
+              },
+              "data": {
+                "value": true  
+              }
             }
 
 ## All salable memberships  [/api/1.0/customer-groups]
@@ -1793,11 +1827,44 @@ Returns a detailed information about history of season ticket packages of authen
                       "shared": false,
                       "expireSoon": false
                     }
-                  ]
+                  ]P
                 }
               ]
              }
              
+
+## Is some season ticket purchasable by customer [/api/1.0/accounts/my/season-tickets/new/enabled]
+<a name="some_season_ticket_purchasable_by_customer"></a>
+### Is some season ticket purchasable by customer [GET]
+Checks if logged customer can buy at least one type of season ticket
+
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+            
++ Response 200 (application/json)
+
+    + Attributes (object) 
+        + value (boolean) - true if currently logged customer can purchase at least one type of season ticket
+
+    + Body
+    
+            {
+              "message": {
+                "httpStatus": 200,
+                "type": "INFO",
+                "code": null,
+                "clientMessage": null,
+                "verboseMessage": null,
+                "docUri": null
+              },
+              "data": {
+                "value": true  
+              }
+            }
+
 
 ## All salable season tickets  [/api/1.0/season-tickets]
 <a name="salable_season_tickets"></a>
@@ -11018,7 +11085,21 @@ Method returns all necessary settings to ensure compatibility with the connected
                         "createReservationOrderEnabled": true,
                         "showFreeCapacityAsText": true,
                         "depositPayableByEpaymentEnabled": true,
-                        "qrCodesModuleEnabled" : true
+                        "qrCodesModuleEnabled" : true,
+                        "phoneCodes" : [
+                            "+420",
+                            "+421" 
+                        ],
+                        "countryNames" : [
+                            {
+                                "countryCode": "CZ",
+                                "countryName": "Česko"
+                            },
+                            {
+                                "countryCode": "SK",
+                                "countryName": "Slovensko"
+                            }
+                        ],
                     }
                 ]
             }
@@ -11639,6 +11720,9 @@ For more information on services follow the subsections:
 + showFreeCapacityAsText (boolean)
 + depositPayableByEpaymentEnabled (boolean)
 + qrCodesModuleEnabled (boolean)
++ phoneCodes (array[string])
++ countryNames (array[Country])
+
 
 ### User credentials authorization (object)
 + `grant_type` (required, string) - Value MUST be set to "password".
@@ -12120,6 +12204,10 @@ For more information on services follow the subsections:
 + personName (string) - Name that will be diplayed on the voucher.
 + note (string) - A note to be append to the voucher.
 + register (boolean) - If true, the value of the `voucher` will billed to the currently authenticated user and substracted from their deposit.
+
+### Country (object)
++ countryName (string) - Name of the country, e.g. Slovensko.
++ countryCode (string) - Code of the country, e.g. SK.
 
 ### Response (object)
 + message (Message) - Message with detailed information included by the CLUBSPIRE system. Never `null`.
