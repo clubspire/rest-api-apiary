@@ -403,6 +403,10 @@ For more information on services follow the subsections:
 + [Latest news](#latest_news)
 + [All news](#all_news)
 + [Terms and Conditions](#terms_and_conditions)
++ [Help](#help)
++ [Price list](#price_list)
++ [Data privacy](#privacy)
++ [Members section](#members_section)
 
 ## Contact [/api/1.0/contact]
 <a name="contact"></a>
@@ -500,10 +504,8 @@ Returns FAQ information defined by the club.
 
 + Response 200 (application/json)
 
-    + Attributes (object)
-        + html (boolean) - Determines whether this text item represents a HTML formatted text or plain text. Value `true` is used for HTML formatted text. 
-        + content (string) - Full FAQ content defined by the club. Could be formatted as HTML.
-
+    + Attributes (HtmlContent)
+        
     + Body 
        
             {
@@ -714,10 +716,8 @@ Returns Terms and Conditions information defined by the club.
 
 + Response 200 (application/json)
 
-    + Attributes (object) 
-        + html (boolean) - Determines whether this text item represents a HTML formatted text or plain text. Value true is used for HTML formatted text.
-        + content (string) - Full content of Terms and Conditions defined by the club. Could be formatted as HTML.
-
+    + Attributes (HtmlContent) 
+        
     + Body
 
             {
@@ -734,6 +734,147 @@ Returns Terms and Conditions information defined by the club.
                         "metaInfo": null,
                         "html": true,
                         "content": "<h2 align=\"center\">\n      PROVOZNÍ ŘÁD  </h2>\n    <div align=\"center\">Zákazník je povinen dodržovat provozní řád SC, dbát pokynů \n      obsluhujícího personálu, trenérú a instruktorů a chovat se ohleduplně k \n      ostatním zákazníkům. <div>"
+                    }
+                ]
+            }
+            
+## Help [/api/1.0/help]
+<a name="help"></a>
+
+### Get help [GET]
+Returns Help information defined by the club.
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+
++ Response 200 (application/json)
+
+    + Attributes (HtmlContent) 
+        
+    + Body
+
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "html": true,
+                        "content": "<h2 align=\"center\">Nápověda</h2>\n    <div align=\"center\"> Zákazníci najdou ručníky k zapůjčení v přední části centra. \n  <div>"
+                    }
+                ]
+            }
+
+## Price list [/api/1.0/price-list]
+<a name="price_list"></a>
+
+### Get price list [GET]
+Returns Price list section defined by the club.
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+
++ Response 200 (application/json)
+
+    + Attributes (HtmlContent) 
+        
+    + Body
+
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "html": true,
+                        "content": "<h2 align=\"center\">Ceník</h2>\n\n\n <div align=\"center\"> <div> sGym Student / Senior * 100 Kč </div>  \n  <div>"
+                    }
+                ]
+            }
+
+## Data privacy [/api/1.0/gdpr]
+<a name="privacy"></a>
+
+### Get data privacy [GET]
+Returns Data privacy defined by the club.
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+
++ Response 200 (application/json)
+
+    + Attributes (HtmlContent) 
+        
+    + Body
+
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "html": true,
+                        "content": "<h2 align=\"justify\">  <b>  OCHRANA OSOBNÍCH ÚDAJŮ</b>  </h2><div align=\"justify\">1. V tomto dokumentu jsou obsaženy informace týkající se ochrany osobních údajů poskytnutých klienty.</div>"
+                    }
+                ]
+            }
+
+## Members section [/api/1.0/members-section]
+<a name="members_section"></a>
+
+### Get members section [GET]
+Returns Members section defined by the club.
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+
++ Response 200 (application/json)
+
+    + Attributes (HtmlContentWithTitle) 
+        
+    + Body
+
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "html": true,
+                        "title": "Členská sekce - pro naše zákazníky",
+                        "content": "<h2 align=\"justify\">  <b>  Členská sekce</b>  </h2><div align=\"justify\">Zákazníci mohou nově využít i nově otevřenou místnost v prvním patře.</div>"
                     }
                 ]
             }
@@ -12240,3 +12381,12 @@ For more information on services follow the subsections:
 ### MetaInfo (object)
 + href (string) - URL path to get resource that this MetaInfo is assigned to. Can be `null`.
 + mediaType (string) - Type of the resource that this MetaInfo is assigned to. Always set to `application/json`.
+
+### HtmlContent (object)
++ html (boolean) - Determines whether this text item represents a HTML formatted text or plain text. Value true is used for HTML formatted text.
++ content (string) - Full content. Could be formatted as HTML.
+
+### HtmlContentWithTitle (object)
++ html (boolean) - Determines whether this text item represents a HTML formatted text or plain text. Value true is used for HTML formatted text.
++ title (string) - Title, e.g. Members section of sportcenter XY. HTML format is not supported, it is plain text.
++ content (string) - Full content. Could be formatted as HTML.
