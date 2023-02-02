@@ -10879,7 +10879,9 @@ Call [GET users/count](#all_users_count) service first to get total number of us
                           "birthDate": "2015-01-01",
                           "termsAccepted": false,
                           "userKey": null,
-                          "lastModifiedDate": "2014-07-31T14:28:37.507+0200"
+                          "lastModifiedDate": "2014-07-31T14:28:37.507+0200",
+                          "customerId": "51f1ca3ac0a800c851be221a0e5cffff",
+                          "promoCredit": false
                       },
                       {
                           "name": "Tom",
@@ -10897,7 +10899,9 @@ Call [GET users/count](#all_users_count) service first to get total number of us
                           "birthDate": "1989-09-25",
                           "termsAccepted": true,
                           "userKey": "s3d5c61cc0a8007600b0690ab5d6d872",
-                          "lastModifiedDate": "2014-07-31T14:28:37.509+0200"
+                          "lastModifiedDate": "2014-07-31T14:28:37.509+0200",
+                          "customerId": "3af1fdcac0a800c851be221a0e5cffff",
+                          "promoCredit": true
                       },
                       {
                           "name": "Jane",
@@ -10915,7 +10919,9 @@ Call [GET users/count](#all_users_count) service first to get total number of us
                           "birthDate": "1991-09-25",
                           "termsAccepted": false,
                           "userKey": "a3dff61cc0a8007600b0690ab5d6d872",
-                          "lastModifiedDate": "2014-07-31T14:28:37.511+0200"
+                          "lastModifiedDate": "2014-07-31T14:28:37.511+0200",
+                          "customerId": "21f1aaaac0a800c851be221a0e5cffff",
+                          "promoCredit": true
                       },
                       {
                           "name": null,
@@ -10933,7 +10939,9 @@ Call [GET users/count](#all_users_count) service first to get total number of us
                           "birthDate": "1989-09-25",
                           "termsAccepted": true,
                           "userKey": "76752b8dc3a8007600661a11d49fd2d8",
-                          "lastModifiedDate": "2014-07-31T14:28:37.513+0200"
+                          "lastModifiedDate": "2014-07-31T14:28:37.513+0200",
+                          "customerId": "51f1fdcac0a800c851be221a0e5cffff",
+                          "promoCredit": true
                       },
                       {
                           "name": null,
@@ -10951,7 +10959,9 @@ Call [GET users/count](#all_users_count) service first to get total number of us
                           "birthDate": "1965-03-15",
                           "termsAccepted": true,
                           "userKey": "addfs2b8dc3a8007600455s11d49fd2d8",
-                          "lastModifiedDate": "2015-06-12T15:18:37.987+0200"
+                          "lastModifiedDate": "2015-06-12T15:18:37.987+0200",
+                          "customerId": "51f1fdcac0a800c851be221a0e5c01ea",
+                          "promoCredit": false
                       }
                   ],
                   "offset": 100,
@@ -11152,7 +11162,8 @@ Returns personal information of authenticated user which included security infor
                         "activationToken": null,
                         "userKey": "870df6b6c0a8020201bcad4e50374009",
                         "lastModifiedDate": "2016-11-30T19:51:21.940+0100",
-                        "customerId": "51f1fdcac0a800c851be221a0e5c01ea"
+                        "customerId": "51f1fdcac0a800c851be221a0e5c01ea",
+                        "promoCredit": false
                     }
                 ]
             }
@@ -11927,7 +11938,7 @@ For more information on services follow the subsections:
 + userKey (string) -  Unique identifier that can be used to the user of REST API. See [USER_KEY grant type](#user_key) of OAuth2 protocol for more information.
 + lastModifiedDate (string) -  Date and time of the last modification of the user. For new user that has not been modified yet this attribute equals creation date and time. See [JSON date serialization](#serialization) for detailed information about date formats.
 + customerId (string) - Id of user.
-
++ promoCredit (boolean) - True if user has promo credit, otherwise has classic deposit.
 
 
 ### UpdatedUserProfile (object)
