@@ -5305,7 +5305,7 @@ in the result and their attribute `matchesFilter` is set to `false`.
                                         "lastName": null,
                                         "email": null,
                                         "phoneNumber": null,
-                                        "info": null,
+                                        "info": "",
                                         "colorRgbHex": "3366CC",
                                         "photoHref": null,
                                         "activities": null
@@ -5373,7 +5373,7 @@ in the result and their attribute `matchesFilter` is set to `false`.
                                         "lastName": null,
                                         "email": null,
                                         "phoneNumber": null,
-                                        "info": null,
+                                        "info": "Sport je jeho život, miluje pohyb a čerstvý vzduch.",
                                         "colorRgbHex": "3366CC",
                                         "photoHref": null,
                                         "activities": null
@@ -5423,7 +5423,7 @@ in the result and their attribute `matchesFilter` is set to `false`.
                                         "lastName": null,
                                         "email": null,
                                         "phoneNumber": null,
-                                        "info": null,
+                                        "info":  "Věnuje se pilates 20 let a cvičí ho v našem centru i15 let.",
                                         "colorRgbHex": "3366CC",
                                         "photoHref": null,
                                         "activities": null
@@ -7423,6 +7423,8 @@ For more information on services follow the subsections:
 + [Create and pay reservation by deposit](#create_and_pay_reservation_by_deposit)
 + [Pay reservation by epayment](#pay_reservation_by_epayment)
 + [Create and pay reservation by epayment](#create_and_pay_reservation_by_epayment)
++ [Pay reservation by season ticket](#pay_reservation_by_season_ticket)
++ [Create and pay reservation by season ticket](#create_and_pay_reservation_by_season_ticket)
 + [My reservations](#my_reservations)
 + [My actual reservations](#my_actual_reservations)
 + [My actual unrealized reservations](#my_actual_unrealized_reservations)
@@ -9276,7 +9278,7 @@ If payment fails, for example due to low deposit balance, an error message is re
 ## Create and pay reservation by deposit [/api/1.0/reservations/new/pay]
 <a name="create_and_pay_reservation_by_deposit"></a>      
 
-### Create and pay reservation by deposit [PUT]
+### Create and pay reservation by deposit [POST]
 
 Creates and pays reservation by customer's deposit. Authenticated user must be the owner of the reservation. 
 If payment fails, for example due to low deposit balance, an error message is returned to the caller. For complete list of message codes and their meanings see [Response messages](#response_messages). 
@@ -9441,6 +9443,107 @@ Returns payment entity object which contains url of the GoPay payment gate.
                     }
                 ]
             }
+
+## Pay reservation by season ticket [/api/1.0/reservations/{id}/season-ticket/pay]
+<a name="pay_reservation_by_season_ticket"></a>      
++ Parameters
+  + id (required, string, `1a29b593c0a8020200bb84d63c88b96c`)...Id of the reservation to pay.
+
+### Pay reservation by season ticket [PUT]
+
+Pays reservation of given **id** by customer's season ticket. Authenticated user must be the owner of the reservation. 
+
+If payment fails, for example due to low deposit balance, an error message is returned to the caller. For complete list of message codes and their meanings see [Response messages](#response_messages). 
+
+<a name="response_messages12"></a>
+#### Response messages
+| Code                                               |Type             |Description                                                                                                                  |
+|----------------------------------------------------|:----------------|:-----------------------------------------------|
+|`success.paymentForReservation.seasonTicket.success`|INFO             |Returned if reservation has been paid by deposit successfully.|
+|`error.payment.notEnabled`                          |ERROR_FATAL      |Returned if payments are disabled by the club.|
+|`error.payment.seasonticket.disabled`               |ERROR_FATAL      |Returned if payments by season tickets are disabled by the club.|
+|`error.payment.unsupportedType`                     |ERROR_RECOVERABLE|Returned if unsupported payment type was provided. Currently supported payment types are: DEPOSIT|
+|`error.payment.notProceed`                          |ERROR_FATAL      |General message returned if payment failed due to unexpected error.|
+|`error.payment.internalError`                       |ERROR_FATAL      |General message returned if payment failed due to unexpected internal error.|
+|`error.payment.invalidData`                         |ERROR_RECOVERABLE|General message returned if provided data was not valid. More detailed information might be retrieved from `fieldErrors` attribute of the response message.|
+|`error.reservation.notOwner`                        |ERROR_FATAL      |Returned if authenticated user is not the owner of reservation.|
+|`error.reservation.find.failed`                     |ERROR_FATAL      |Returned if reservation does not exist.|
+|`error.payment.reservation. alreadyPaid`            |ERROR_FATAL      |Returned if user tries to pay reservation that has already been paid|
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+            
+    + Attributes (object)
+        + type (enum[string])- How should the reservation be paid. 
+            + members
+                + SEASON_TICKET
+    
+    + Body
+        
+            {
+                "type":"SEASON_TICKET"
+            }
+  
++ Response 200 (application/json)
+
+## Create and pay reservation by season ticket [/api/1.0/reservations/new/season-ticket/pay]
+<a name="create_and_pay_reservation_by_season_ticket"></a>      
+
+### Create and pay reservation by season ticket [POST]
+
+Creates and pays reservation by customer's season ticket(s). Authenticated user must be the owner of the reservation. 
+If payment fails, an error message is returned to the caller. For complete list of message codes and their meanings see [Response messages](#response_messages). 
+
+<a name="response_messages12"></a>
+#### Response messages
+| Code                                             |Type             |Description                                                                                                                  |
+|--------------------------------------------------|:----------------|:-----------------------------------------------|
+|`success.reservation.createdAndPaidBySeasonTicket`|INFO             |Returned if reservation has been created and paid by deposit successfully.|
+|`error.payment.notEnabled`                        |ERROR_FATAL      |Returned if payments are disabled by the club.|
+|`error.payment.seasonTicket.disabled`             |ERROR_FATAL      |Returned if payments by season tickets are disabled by the club.|
+|`error.payment.unsupportedType`                   |ERROR_RECOVERABLE|Returned if unsupported payment type was provided. Currently supported payment types are: DEPOSIT|
+|`error.payment.notProceed`                        |ERROR_FATAL      |General message returned if payment failed due to unexpected error.|
+|`error.payment.internalError`                     |ERROR_FATAL      |General message returned if payment failed due to unexpected internal error.|
+|`error.payment.invalidData`                       |ERROR_RECOVERABLE|General message returned if provided data was not valid. More detailed information might be retrieved from `fieldErrors` attribute of the response message.|
+|`error.reservation.notOwner`                      |ERROR_FATAL      |Returned if authenticated user is not the owner of reservation.|
+|`error.reservation.find.failed`                   |ERROR_FATAL      |Returned if reservation does not exist.|
+|`error.payment.reservation. alreadyPaid`          |ERROR_FATAL      |Returned if user tries to pay reservation that has already been paid|
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+            
+    + Attributes(CreateReservation)
+
+    + Body
+
+            {
+                "instructorId": "-1",
+                "sportId": "f27e8234c0a83332534017e05b879988",
+                "objectId": "54b8cab3c0a8463201cbe89d20857a81",
+                "personCount": 8,   
+                "startTime": "2016-12-07T18:00:00.000+0200",
+                "endTime": "2016-12-07T19:30:00.000+0200",
+                "note": "note",
+                "emailNotificationBeforeMinutes": null,
+                "smsNotificationBeforeMinutes": null,  
+                "pushNotificationBeforeMinutes": null,          
+                "paymentType":null,
+                "substitute":false,
+                "substituteForAnyObjectOfAreal":false,
+                "createReservationFromSubstitute":false,
+                "substituteAcceptanceMinutesBefore":0,
+                "substituteEmailNotification":false,
+                "substituteSMSNotification":false,
+                "substitutePushNotification":false
+            } 
+  
++ Response 200 (application/json)
 
 ## My reservations [/api/1.0/reservations/my]
 <a name="my_reservations"></a>
