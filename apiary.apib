@@ -17,7 +17,6 @@ For more information on authentication and services follow the subsections:
 + [Center](#center)
 + [Users](#users)
 + [Settings](#settings)
-+ [Mobile application update](#mobile_app_update)
 + [Firebase Cloud Messaging - FCM notifications](#fcm_notifications)
 + [Tabs](#tabs)
 + [Version](#version)
@@ -5322,7 +5321,8 @@ in the result and their attribute `matchesFilter` is set to `false`.
                               "freePlaces": 9,
                               "capacity": 10,
                               "substitute": false,
-                              "newReservationUrl": "https://192.168.0.242:58443/api/1.0/reservations/new?objectId=54b8cab3c0a8463201cbe89d20857a81&sportId=f27e8234c0a83332534017e05b879988&tabIndex=2&startTime=2016-12-07T18:00:00.000%2B0100"
+                              "newReservationUrl": "https://192.168.0.242:58443/api/1.0/reservations/new?objectId=54b8cab3c0a8463201cbe89d20857a81&sportId=f27e8234c0a83332534017e05b879988&tabIndex=2&startTime=2016-12-07T18:00:00.000%2B0100",
+                              "lessonTooSoonBeforeStart": false    
                             }
                           ]
                         }
@@ -5390,7 +5390,8 @@ in the result and their attribute `matchesFilter` is set to `false`.
                               "freePlaces": 15,
                               "capacity": 15,
                               "substitute": false,
-                              "newReservationUrl": "https://192.168.0.242:58443/api/1.0/reservations/new?objectId=86f03614c0a8006701724be6a78c372e&sportId=86e8abd5c0a800670151aa6bad8dd825&tabIndex=0&startTime=2016-12-09T08:00:00.000%2B0100"
+                              "newReservationUrl": "https://192.168.0.242:58443/api/1.0/reservations/new?objectId=86f03614c0a8006701724be6a78c372e&sportId=86e8abd5c0a800670151aa6bad8dd825&tabIndex=0&startTime=2016-12-09T08:00:00.000%2B0100",
+                              "lessonTooSoonBeforeStart": false                            
                             },
                             {
                               "emptySpace": false,
@@ -5440,7 +5441,8 @@ in the result and their attribute `matchesFilter` is set to `false`.
                               "freePlaces": 10,
                               "capacity": 10,
                               "substitute": false,
-                              "newReservationUrl": "https://192.168.0.242:58443/api/1.0/reservations/new?objectId=51a5e734c0a846320070e4ce95d6c52d&sportId=86e4b176c0a8006701476fedb6eadb25&tabIndex=0&startTime=2016-12-09T09:00:00.000%2B0100"
+                              "newReservationUrl": "https://192.168.0.242:58443/api/1.0/reservations/new?objectId=51a5e734c0a846320070e4ce95d6c52d&sportId=86e4b176c0a8006701476fedb6eadb25&tabIndex=0&startTime=2016-12-09T09:00:00.000%2B0100",
+                              "lessonTooSoonBeforeStart": false
                             },
                             {
                               "emptySpace": false,
@@ -5490,7 +5492,8 @@ in the result and their attribute `matchesFilter` is set to `false`.
                               "freePlaces": 15,
                               "capacity": 15,
                               "substitute": false,
-                              "newReservationUrl": "https://192.168.0.242:58443/api/1.0/reservations/new?objectId=86f03614c0a8006701724be6a78c372e&sportId=86e8146cc0a80067010ceb7c89d162ba&tabIndex=0&startTime=2016-12-09T18:00:00.000%2B0100"
+                              "newReservationUrl": "https://192.168.0.242:58443/api/1.0/reservations/new?objectId=86f03614c0a8006701724be6a78c372e&sportId=86e8146cc0a80067010ceb7c89d162ba&tabIndex=0&startTime=2016-12-09T18:00:00.000%2B0100",
+                              "lessonTooSoonBeforeStart": false
                             }
                           ]
                         }
@@ -5558,7 +5561,8 @@ in the result and their attribute `matchesFilter` is set to `false`.
                               "freePlaces": 15,
                               "capacity": 15,
                               "substitute": false,
-                              "newReservationUrl": "https://192.168.0.242:58443/api/1.0/reservations/new?objectId=86f03614c0a8006701724be6a78c372e&sportId=98de2580c0a8463200e1958162127b3d&tabIndex=0&startTime=2016-12-11T18:00:00.000%2B0100"
+                              "newReservationUrl": "https://192.168.0.242:58443/api/1.0/reservations/new?objectId=86f03614c0a8006701724be6a78c372e&sportId=98de2580c0a8463200e1958162127b3d&tabIndex=0&startTime=2016-12-11T18:00:00.000%2B0100",
+                              "lessonTooSoonBeforeStart": false
                             }
                           ]
                         }
@@ -5713,7 +5717,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T11:00:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T11:00:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     },
                                                     {
                                                         "reservationEnabled": true,
@@ -5776,7 +5781,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T11:30:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T11:30:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     }
                                                 ]
                                             },
@@ -5847,7 +5853,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T12:00:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T12:00:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     },
                                                     {
                                                         "reservationEnabled": true,
@@ -5910,7 +5917,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T12:30:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T12:30:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     }
                                                 ]
                                             },
@@ -5981,7 +5989,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T13:00:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T13:00:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     },
                                                     {
                                                         "reservationEnabled": true,
@@ -6044,7 +6053,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T13:30:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T13:30:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     }
                                                 ]
                                             },
@@ -6115,7 +6125,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T14:00:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T14:00:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     },
                                                     {
                                                         "reservationEnabled": true,
@@ -6178,7 +6189,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T14:30:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T14:30:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     }
                                                 ]
                                             },
@@ -6249,7 +6261,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T15:00:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T15:00:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     },
                                                     {
                                                         "reservationEnabled": true,
@@ -6312,7 +6325,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T15:30:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T15:30:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     }
                                                 ]
                                             },
@@ -6383,7 +6397,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T16:00:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T16:00:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     },
                                                     {
                                                         "reservationEnabled": true,
@@ -6446,7 +6461,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T16:30:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T16:30:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     }
                                                 ]
                                             },
@@ -6517,7 +6533,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T17:00:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T17:00:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     },
                                                     {
                                                         "reservationEnabled": true,
@@ -6580,7 +6597,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T17:30:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T17:30:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     }
                                                 ]
                                             },
@@ -6651,7 +6669,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T18:00:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T18:00:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     },
                                                     {
                                                         "reservationEnabled": true,
@@ -6714,7 +6733,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T18:30:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T18:30:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     }
                                                 ]
                                             },
@@ -6785,7 +6805,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T19:00:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T19:00:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     },
                                                     {
                                                         "reservationEnabled": true,
@@ -6848,7 +6869,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T19:30:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T19:30:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     }
                                                 ]
                                             },
@@ -6919,7 +6941,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T20:00:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T20:00:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     },
                                                     {
                                                         "reservationEnabled": true,
@@ -6982,7 +7005,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T20:30:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T20:30:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     }
                                                 ]
                                             },
@@ -7053,7 +7077,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T21:00:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T21:00:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     },
                                                     {
                                                         "reservationEnabled": true,
@@ -7116,7 +7141,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T21:30:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T21:30:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     }
                                                 ]
                                             },
@@ -7187,7 +7213,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T22:00:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T22:00:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     },
                                                     {
                                                         "reservationEnabled": true,
@@ -7250,7 +7277,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T22:30:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T22:30:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     }
                                                 ]
                                             },
@@ -7321,7 +7349,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T23:00:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T23:00:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     },
                                                     {
                                                         "reservationEnabled": true,
@@ -7384,7 +7413,8 @@ limits on how far to future the schedule can be retrieved. If user exceedes the 
                                                         "myReservationId": null,
                                                         "mySubstituteId": null,
                                                         "substitute": false,
-                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T23:30:00.000%2B0200"
+                                                        "newReservationUrl": "https://reservation.grandrelax.cz/api/1.0/reservations/new?objectId=bedcd8b07f00000101ceb2fe2f55b78d&sportId=bed9b0487f000001018ef5786b1d1e32&tabIndex=2&startTime=2015-06-30T23:30:00.000%2B0200",
+                                                        "tooSoonBeforeStart": false
                                                     }
                                                 ]
                                             }
@@ -7429,6 +7459,7 @@ For more information on services follow the subsections:
 + [My actual reservations](#my_actual_reservations)
 + [My actual unrealized reservations](#my_actual_unrealized_reservations)
 + [My historic reservations](#my_historic_reservations)
++ [Get reservation payable by season ticket](#reservation_payable_by_season_ticket)
 
 ## Reservation lifecycle
 
@@ -7855,7 +7886,8 @@ If invalid data is provided error message is returned to the caller. For complet
                     "substituteSmsNotification": false,
                     "substitutePushNotification": false,
                     "temporary": false,
-                    "temporaryValidTo": null
+                    "temporaryValidTo": null,
+                    "moreSports": false
                     }
                 }
               ]
@@ -8294,7 +8326,8 @@ If invalid data is provided error message is returned to the caller. For complet
                     "substituteSmsNotification": false,
                     "substitutePushNotification": false,
                     "temporary": false,
-                    "temporaryValidTo": null
+                    "temporaryValidTo": null,
+                    "moreSports": false
                   }
                 }
               ]
@@ -8452,7 +8485,8 @@ Recommended way to create new reservation is to follow these steps:
                       "substituteSmsNotification": false,
                       "substitutePushNotification": false,
                       "temporary": false,
-                      "temporaryValidTo": null
+                      "temporaryValidTo": null,
+                      "moreSports": false
                     }
                   ]
                 }
@@ -8986,7 +9020,8 @@ If some error occurs during retreiving reservation data error message is returne
                     "substituteSmsNotification": false,
                     "substitutePushNotification": false,
                     "temporary": false,
-                    "temporaryValidTo": null
+                    "temporaryValidTo": null,
+                    "moreSports": false
                   }
                 }
               ]
@@ -9179,7 +9214,8 @@ If some error occurs during retreiving reservation data error message is returne
                     "substituteSmsNotification": false,
                     "substitutePushNotification": false,
                     "temporary": false,
-                    "temporaryValidTo": null
+                    "temporaryValidTo": null,
+                    "moreSports": false
                   }
                 }
               ]
@@ -10539,6 +10575,54 @@ Returns [paginated list](#responsePaginated) of historic reservations of authent
                   "nextPageHref": "https://reservation.grandrelax.cz/api/1.0/reservations/my/actual?offset=10&limit=10"
               }
 
+## Reservation payable by season ticket [/api/1.0/reservations/season-ticket/payable]
+<a name="reservation_payable_by_season_ticket"></a>
+### Get reservation payable by season ticket [POST]
+
+Returns impulses count of season ticket(s) that can be used to reservation payment for specific reservation settings and customer to determine if season ticket payment should be visible. If impulsesNeeded is greater than impulsesBefore, customer has not enough impulses to pay. 
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+    
+    + Attributes (IsReservationPayableBySeasonTicket)
+    
+    + Body
+        
+            {
+                "customerId" : "51f1ca3ac0a800c851be221a0e5cffff",
+                "sportId" : "f27e8234c0a83332534017e05b879988",
+                "personCount": 4,
+                "startTime": "2016-12-07T18:00:00.000+0200",
+                "endTime": "2016-12-07T19:30:00.000+0200"
+            }
+
++ Response 200 (application/json)
+
+    + data (ReservationBySeasonTicket) - Impulses count usable to reservation payment and impulses count needed for succesfull payment.
+ 
+    + Body
+    
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "impulsesBefore": 10,
+                        "impulsesNeeded": 4,
+                    }
+                ]
+            }
+
+
 # Group Center
 <a name="center"></a>
 
@@ -11332,6 +11416,7 @@ Method returns all necessary settings to ensure compatibility with the connected
                         "ePaymentsEnabled": true,
                         "reservationCanBePaidWithDepositEnabled": true,
                         "reservationCanBePaidWithCreditCardEnabled": true,
+                        "reservationCanBePaidWithSeasonTicketEnabled": true,
                         "seasonTicketCanBePaidWithCreditCardEnabled": true,
                         "seasonTicketCanBePaidWithDepositEnabled": true,
                         "membershipCanBePaidWithCreditCardEnabled": true,
@@ -11364,139 +11449,6 @@ Method returns all necessary settings to ensure compatibility with the connected
                         "membershipCanBePaidWithPromoCreditEnabled" : true,
                         "seasonTicketCanBePaidWithPromoCreditEnabled" : true,
                         "wholeWeekScheduleButtonHidden": true
-                    }
-                ]
-            }
-
-# Group Mobile application update
-<a name="mobile_app_update"></a>
-
-## Check for mobile app update [/api/1.0/update]
-<a name="check_for_update"></a> 
-
-### Check for mobile app update [POST]
-
-Method returns informations about latest version of mobile application if newer version exists.
-
-+ Request (application/json)
-    Request from Android application.
-
-    + Headers
-    
-            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
-    
-    + Body
-    
-            {
-                "appVersion": "2.2.10",
-                "appId": "com.clubspire.android.crimed",
-                "appName": "crimed",
-                "deviceVersion": "11"
-            }
-
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "message": {
-                    "httpStatus": 200,
-                    "type": "INFO",
-                    "code": null,
-                    "clientMessage": null,
-                    "verboseMessage": null,
-                    "docUri": null
-                },
-                "data": [
-                    {
-                        "metaInfo": null,
-                        "response": {
-                            "isNewVersionAvailable": true,
-                            "newestVersion": "v2.2.12",
-                            "storeUrl": "https://play.google.com/store/apps/details?id=com.clubspire.android.crimed"
-                        }
-                    }
-                ]
-            }
-
-+ Request (application/json)
-    Request from IOS application.
-    
-    + Headers
-    
-            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
-    
-    + Body
-    
-            {
-                "appVersion": "2.6.0",
-                "appId": "1605746552",
-                "appName": "davajmakaj",
-                "deviceVersion": "9.5"
-            }
-
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "message": {
-                    "httpStatus": 200,
-                    "type": "INFO",
-                    "code": null,
-                    "clientMessage": null,
-                    "verboseMessage": null,
-                    "docUri": null
-                },
-                "data": [
-                    {
-                        "metaInfo": null,
-                        "response": {
-                            "isNewVersionAvailable": true,
-                            "newestVersion": "v2.6.1",
-                            "storeUrl": "https://apps.apple.com/tt/app/davajmakaj/id1605746552"
-                        }
-                    }
-                ]
-            }
-    
-+ Request (application/json)
-    Request from IOS application with response when there is no new available update.
-    
-    + Headers
-    
-            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
-    
-    + Body
-    
-            {
-                "appVersion": "2.6.1",
-                "appId": "1605746552",
-                "appName": "davajmakaj",
-                "deviceVersion": "9.5"
-            }
-
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "message": {
-                    "httpStatus": 200,
-                    "type": "INFO",
-                    "code": null,
-                    "clientMessage": null,
-                    "verboseMessage": null,
-                    "docUri": null
-                },
-                "data": [
-                    {
-                        "metaInfo": null,
-                        "response": {
-                            "isNewVersionAvailable": false,
-                            "newestVersion": null,
-                            "storeUrl": null
-                        }
                     }
                 ]
             }
@@ -11975,6 +11927,7 @@ For more information on services follow the subsections:
 + ePaymentsEnabled (boolean)
 + reservationCanBePaidWithDepositEnabled (boolean)
 + reservationCanBePaidWithCreditCardEnabled (boolean)
++ reservationCanBePaidWithSeasonTicketEnabled (boolean)
 + seasonTicketCanBePaidWithCreditCardEnabled (boolean)
 + seasonTicketCanBePaidWithDepositEnabled (boolean)
 + membershipCanBePaidWithCreditCardEnabled (boolean)
@@ -12263,6 +12216,7 @@ For more information on services follow the subsections:
 + substitutePushNotification (boolean) - Whether system should send customer push notification when free places appear. `True` for enable push notification about free places, `false` otherwise.
 + temporary (boolean) - Whether the reservation is temporary. Temporary reservation is valid only for short time, typically for 30 minutes. If the reservation is not paid within the limit it is automatically removed. `True` if the reservation is temporary, `false` otherwise. Always `false` for new reservation.
 + temporaryValidTo (string) - Date and time till which the temporary reservation is valid. After this time it is automatically removed. Always `null` for new reservation. See [JSON date serialization](#serialization) for detailed information about date formats.
++ moreSports (boolean) - Wheter the reservation is over 2 reservation zones.
 
 ### Sport (object)
 + id (string) - Unique identifier of the sport.
@@ -12418,6 +12372,7 @@ For more information on services follow the subsections:
 + capacity (number) - Total capacity of object where the scheduled sport is performed.
 + substitute (boolean) - `True` if all places for the scheduled sport are booked and customers can only create reservations as substitute (in waiting list), `false` otherwise.
 + newReservationUrl (string) - URL that can be directly used in GET request to obtain reservation settings along with new reservation data properly initilized for scheduled sport. For more information about recommended way of creating new reservation see [Create new reservation section](#create_reservation).
++ lessonTooSoonBeforeStart (string) - `True` if current lesson is too soon before start - should not be clickable. If `False` lesson should be clickable.
 
 ### Tab (object)
 + index (number) - Index of tab.
@@ -12467,6 +12422,7 @@ For more information on services follow the subsections:
 + mySubstituteId (string) - Id of the substitute reservation owned by authenticated user created for the time slot. Can be `null` if the time slot does not contain substitute reservation of authenticated user.
 + substitute (boolean) - `True` if all places for the time slot are booked and customers can only create reservations as substitute (in waiting list), `false` otherwise.
 + newReservationUrl (string) - URL that can be directly used in GET request to obtain reservation settings along with new reservation data properly initilized for scheduled sport. For more information about recommended way of creating new reservation see [Create new reservation section](#create_reservation) section.
++ tooSoonBeforeStart (string) -  `True` if current activity which takes place this hour detail is too soon before start - should not be clickable. If `False` this hour detail should be clickable.
 
 ### Voucher (object)
 + voucherId (string) - Unique identificator of the voucher.
@@ -12522,3 +12478,14 @@ For more information on services follow the subsections:
 + html (boolean) - Determines whether this text item represents a HTML formatted text or plain text. Value true is used for HTML formatted text.
 + title (string) - Title, e.g. Members section of sportcenter XY. HTML format is not supported, it is plain text.
 + content (string) - Full content. Could be formatted as HTML.
+
+### IsReservationPayableBySeasonTicket (object)
++ customerId (string) - Customer id of the authenticated user that is creating the reservation.
++ sportId (string) - Selected sport id of the reservation. 
++ personCount (number) - Selected person count of the reservation.
++ startTime (string) - Selected start time of the reservation. See [JSON date serialization](#serialization) for detailed information about date formats.
++ endTime (string) - Selected end time of the reservation. See [JSON date serialization](#serialization) for detailed information about date formats.
+
+### ReservationBySeasonTicket (object)
++ impulsesBefore (number) - Count of usable impulses of season ticket(s) to provided reservation.
++ impulsesNeeded (number) - Count of needed impulses of season ticket(s) to pay the reservation with season tickets(s).
