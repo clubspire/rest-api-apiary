@@ -910,6 +910,11 @@ This section documents all services providing information about account of authe
 + [Buy membership by epayment](#buy_membership_by_epayment)
 + [Pay membership repayment by deposit](#pay_membership_repayment_by_deposit)
 + [Pay membership repayment by epayment](#pay_membership_repayment_by_epayment)
++ [My valid vouchers](#my_valid_vouchers)
++ [My invalid vouchers](#my_invalid_vouchers)
++ [Payment info to purchase a voucher](#payment_info_vouchers)
++ [Buy voucher by deposit](#buy_voucher_by_deposit)
++ [Buy voucher by epayment](#buy_voucher_by_epayment)
 
 ## My deposit [/api/1.0/accounts/my/deposit]
 <a name="my_deposit"></a>
@@ -4498,6 +4503,240 @@ Returns detailed information about season ticket of given **id**. Authenticated 
                 }
               ]
             }
+            
+## My valid vouchers [/api/1.0/voucher/my/valid]
+<a name="my_valid_vouchers"></a>
+### Get my valid vouchers [GET]
+Valid vouchers are vouchers that are valid now or in future. These vouchers are also active, payed and were not used.
+
+The service returns collection of all valid vouchers of authenticated user.
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+            
++ Response 200 (application/json)
+
+    + Attributes (My vouchers) 
+    
+    + Body
+
+            {
+              "message": {
+                "httpStatus": 200,
+                "type": "INFO",
+                "code": null,
+                "clientMessage": null,
+                "verboseMessage": null,
+                "docUri": null
+              },
+              "data": [
+                {
+                    "metaInfo": null,
+                    "voucherId": "512104813459",
+                    "validFrom": "2023-10-16T00:00:00.000+0200",
+                    "validUntil": "2024-04-16T00:00:00.000+0200",
+                    "personName": "Fantomas",
+                    "value": 200,
+                    "currency": "Kč",
+                    "note": "poznamka",
+                    "membershipId": null,
+                    "packageId": null,
+                    "name": "Voucher na částku 200 Kč",
+                    "reasonForInvalidation": null
+                }
+              ]
+            }
+
+## My invalid vouchers [/api/1.0/voucher/my/invalid]
+<a name="my_invalid_vouchers"></a>
+### Get my invalid or used vouchers [GET]
+Invalid vouchers are vouchers that were valid in past or they are inactive, not payed or used.
+
+The service returns collection of all invalid vouchers of authenticated user.
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+            
++ Response 200 (application/json)
+
+    + Attributes (My vouchers) 
+    
+    + Body
+
+            {
+              "message": {
+                "httpStatus": 200,
+                "type": "INFO",
+                "code": null,
+                "clientMessage": null,
+                "verboseMessage": null,
+                "docUri": null
+              },
+              "data": [
+                {
+                    "metaInfo": null,
+                    "voucherId": "512104813459",
+                    "validFrom": "2023-01-16T00:00:00.000+0200",
+                    "validUntil": "2023-10-16T00:00:00.000+0200",
+                    "personName": "Fantomas",
+                    "value": 200,
+                    "currency": "Kč",
+                    "note": "Příspěvěk na masku",
+                    "membershipId": null,
+                    "packageId": null,
+                    "name": "Voucher na částku 200 Kč",
+                    "reasonForInvalidation": "Expirovaný"
+                },
+                {
+                    "metaInfo": null,
+                    "voucherId": "104819512345",
+                    "validFrom": "2023-10-16T00:00:00.000+0200",
+                    "validUntil": "2024-04-16T00:00:00.000+0200",
+                    "personName": "Šemík",
+                    "value": 500,
+                    "currency": "Kč",
+                    "note": "Pro mého koně k narozeninám",
+                    "membershipId": null,
+                    "packageId": null,
+                    "name": "Voucher na částku 500 Kč",
+                    "reasonForInvalidation": "Použitý"
+                }
+              ]
+            }
+
+## Payment info to purchase a voucher [/api/1.0/voucher/info]
+<a name="payment_info_vouchers"></a>
+### Get payment information to purchase a voucher [GET]
+Before purchasing vouchers, it is advisable to tell users what is the minimum amount and its currency, 
+for which the voucher can be and also for how many months the voucher will be valid from the selected validity period.
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+            
++ Response 200 (application/json)
+
+    + Attributes (Voucher purchase info) 
+    
+    + Body
+
+            {
+              "message": {
+                "httpStatus": 200,
+                "type": "INFO",
+                "code": null,
+                "clientMessage": null,
+                "verboseMessage": null,
+                "docUri": null
+              },
+              "data": [
+                {
+                    "metaInfo": null,
+                    "minimalValue": 200,
+                    "currencyCode": "CZK",
+                    "validMonths": 12
+                }
+              ]
+            }
+
+                        
+## Buy voucher by deposit [/api/1.0/voucher/pay]
+<a name="buy_voucher_by_deposit"></a>
+### Buy voucher by deposit[POST]
+Buy voucher with specified value, note and person by customer's deposit. Authenticated user will be owner of this voucher. 
+
+If payment fails, for example due to low deposit balance, an error message is returned to the caller. For complete list of message codes and their meanings see [Response messages](#response_messages_buy_voucher_by_deposit). 
+
+<a name="response_messages_buy_voucher_by_deposit"></a>
+#### Response messages
+
+| Code                                           |Type             |Description                                                                                                                  |
+|------------------------------------------------|:----------------|:-----------------------------------------------|
+|`success.paymentForVoucher.deposit.success`     |INFO             |Returned if voucher has been paid by deposit successfully.|
+|`error.payment.notEnabled`                      |ERROR_FATAL      |Returned if payments are disabled by the club.|
+|`error.payment.deposit.disabled`                |ERROR_FATAL      |Returned if payments by deposit are disabled by the club.|
+|`error.payment.unsupportedType`                 |ERROR_RECOVERABLE|Returned if unsupported payment type was provided. Currently supported payment types are: DEPOSIT, EPAYMENT|
+|`error.payment.notProceed`                      |ERROR_FATAL      |General message returned if payment failed due to unexpected error.|
+|`error.payment.internalError`                   |ERROR_FATAL      |General message returned if payment failed due to unexpected internal error.|
+|`error.payment.invalidData`                     |ERROR_RECOVERABLE|General message returned if provided data was not valid. More detailed information might be retrieved from `fieldErrors` attribute of the response message.|
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer Ezrma9eDtv4cJu3ciqxj9huWnbg
+            
+    + Attributes (VoucherForm)
+            
+    + Body
+    
+            {
+                "paymentType": "DEPOSIT",
+                "voucher": {
+                    "note": "Krásné narozeniny",
+                    "personName": "David Novák",
+                    "value": 350,
+                    "validFrom": "2023-11-03T00:00:00.000+0000"
+                  }
+            }
+            
++ Response 200 (application/json)
+
+## Buy voucher by epayment [/api/1.0/voucher/epayment/pay]
+<a name="buy_voucher_by_epayment"></a>
+### Buy voucher by epayment[POST]
+Buy voucher with specified value, note and person by card (online payment). Authenticated user will be owner of this voucher.
+Returns paymentEntity with a url of the GoPay payment gate. 
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer Ezrma9eDtv4cJu3ciqxj9huWnbg
+            
+    + Attributes (VoucherForm)
+            
+    + Body
+    
+            {
+                "paymentType": "EPAYMENT",
+                "voucher": {
+                    "note": "K svátku",
+                    "personName": "Jan Novák",
+                    "value": 500,
+                    "validFrom": "2023-11-03T00:00:00.000+0000"
+                  }
+            }
+            
++ Response 200 (application/json)
+
+    + Attributes (PaymentResponse)  
+
+    + Body
+ 
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "orderNumber": "3091463609",
+                        "url": "https://gw.sandbox.gopay.com/gw/v3/d7c86688060a506b010dfeede8aea6a8"
+                    }
+                ]
+            } 
+ 
  
 # Group Activities
 <a name="activities"></a>
@@ -11774,9 +12013,14 @@ For more information on services follow the subsections:
                 ]
             }
 
+
+<!---
+OLD VOUCHER CREATION - Still working but it is easily abusable so we do not want to document this.
+
 # Group Vouchers
 <a name="vouchers"></a>
 For more information on services follow the subsections: 
+
 + [Create new voucher](#create_voucher)
 
 ## Create new voucher [/api/1.1/voucher]
@@ -11823,16 +12067,17 @@ For more information on services follow the subsections:
                     }
                 ]
             }
+-->
 
 # Group Version
 <a name="version"></a>
 For more information on services follow the subsections: 
-+ [Check version is at least some](#check_version)
++ [Check minimum version](#check_version)
 
-## Check version is at least some [/api/1.0/version/atLeast/{version}]
+## Check minimum version  [/api/1.0/version/atLeast/{version}]
 <a name="check_version"></a>
   
-### Check version is at least some [GET]
+### Check minimum version is at least [GET]
 
 + Request (application/json)
     + Headers
@@ -11877,6 +12122,19 @@ For more information on services follow the subsections:
 + index (number) - Index of the type
 + price (Price) - Price of the membership with the selected type
 
+### VoucherForm (object)
++ voucher (Voucher)
++ paymentType (enum[string], required) - Type of payment.
+  + members
+    + DEPOSIT
+    + EPAYMENT
+    
+### Voucher (object)
++ value (number) - Amount for which the voucher can be redeemed
++ note (string) - A note that can appear on the voucher can be used to write the dedication of the voucher. Could be null.
++ personName (string) - Name of the person for whom the voucher was purchased. Could be null. 
++ validFrom (string) - Beginning of the validity of the membership. Never `null`. See [JSON date serialization](#serialization) for detailed information about date formats.
+    
 ### Payment (object)
 + amount (string, required)) - Amount of the payment.
 + lang (enum[string]) - Parameter defines language of the payment gateway.
@@ -12326,6 +12584,24 @@ For more information on services follow the subsections:
 + shared (boolean) - `true` if the season ticket is shared by more customers, `false` otherwise.
 + expireSoon (boolean) - `true` if the season ticket will expire soon, `false` otherwise. Expiration time threshold is set by the club. It is usually set to several days before validity ends.
 
+### My vouchers (object)
++ voucherId (string) - Unique identifier of the voucher.
++ validFrom (string) - Date from which the voucher can be used. See [JSON date serialization](#serialization) for detailed information about date formats.
++ validUntil (string) - Date till which the voucher can be used. See [JSON date serialization](#serialization) for detailed information about date formats.
++ personName (string) - Name of the person that can use the voucher. 
++ value (number) - Value for which the voucher can be used.
++ currency (string) - Currency of value.
++ note (string) - Note that could be shown on physical voucher. Could be used for writing dedication for someone.
++ membershipId (string) - Id of membership which was bought in current voucher. Not yet implemented.
++ packageId (string) - Id of voucher package which was bought in current voucher. Not yet implemented.
++ name (string) - Localized text indicating what the voucher can be used for.
++ reasonForInvalidation (string) - Localized text indicating why is voucher invalid. Null when voucher is valid.
+
+### Voucher purchase info (object)
++ minimalValue (number) - The minimum value for which a voucher can be purchased. The price of the voucher is the same as the amount for which it can be used afterwards. Never null.
++ currencyCode (string) - Currency code for the value. Never null.
++ validMonths (number) - Number of months the voucher will be valid from the selected start date. Never null.
+
 ### Season ticket usage history
 + title (string) - Name of sport or product for which season ticket was used
 + value (number) - Number of used units
@@ -12427,6 +12703,7 @@ For more information on services follow the subsections:
 + newReservationUrl (string) - URL that can be directly used in GET request to obtain reservation settings along with new reservation data properly initilized for scheduled sport. For more information about recommended way of creating new reservation see [Create new reservation section](#create_reservation) section.
 + tooSoonBeforeStart (string) -  `True` if current activity which takes place this hour detail is too soon before start - should not be clickable. If `False` this hour detail should be clickable.
 
+<!--
 ### Voucher (object)
 + voucherId (string) - Unique identificator of the voucher.
 + value (number) - Total value of the voucher.
@@ -12436,6 +12713,7 @@ For more information on services follow the subsections:
 + personName (string) - Name that will be diplayed on the voucher.
 + note (string) - A note to be append to the voucher.
 + register (boolean) - If true, the value of the `voucher` will billed to the currently authenticated user and substracted from their deposit.
+-->
 
 ### Country (object)
 + countryName (string) - Name of the country, e.g. Slovensko.
