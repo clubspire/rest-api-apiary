@@ -7869,6 +7869,7 @@ If invalid data is provided error message is returned to the caller. For complet
                         "waitingCancelEnabled": true,
                         "paymentEnabled": false,
                         "orderEnabled": true,
+                        "reservationBlocked": true,
                         "editFee": null,
                         "cancelFee": null,
                         "lengthIncrementMinutes": null,
@@ -8068,6 +8069,7 @@ If invalid data is provided error message is returned to the caller. For complet
                     "waitingCancelEnabled": true,
                     "paymentEnabled": false,
                     "orderEnabled": true,
+                    "reservationBlocked": true,
                     "editFee": null,
                     "cancelFee": null,
                     "lengthIncrementMinutes": null,
@@ -8290,6 +8292,7 @@ If invalid data is provided error message is returned to the caller. For complet
                         "waitingCancelEnabled": true,
                         "paymentEnabled": false,
                         "orderEnabled": true,
+                        "reservationBlocked": true,
                         "editFee": null,
                         "cancelFee": null,
                         "lengthIncrementMinutes": null,
@@ -8510,6 +8513,7 @@ If invalid data is provided error message is returned to the caller. For complet
                     "waitingCancelEnabled": true,
                     "paymentEnabled": true,
                     "orderEnabled": true,
+                    "reservationBlocked": true,
                     "editFee": null,
                     "cancelFee": null,
                     "lengthIncrementMinutes": null,
@@ -8853,6 +8857,7 @@ If some error occurs during retreiving reservation data error message is returne
                             "waitingCancelEnabled": true,
                             "paymentEnabled": false,
                             "orderEnabled": true,
+                            "reservationBlocked": true,
                             "editFee": null,
                             "cancelFee": null,
                             "lengthIncrementMinutes": null,
@@ -9199,6 +9204,7 @@ If some error occurs during retreiving reservation data error message is returne
                     "waitingCancelEnabled": true,
                     "paymentEnabled": true,
                     "orderEnabled": true,
+                    "reservationBlocked": true,
                     "editFee": null,
                     "cancelFee": {
                       "currencyCode": "CZK",
@@ -9393,6 +9399,7 @@ If some error occurs during retreiving reservation data error message is returne
                     "waitingCancelEnabled": true,
                     "paymentEnabled": true,
                     "orderEnabled": true,
+                    "reservationBlocked": true,
                     "editFee": null,
                     "cancelFee": {
                       "currencyCode": "CZK",
@@ -11689,7 +11696,15 @@ Method returns all necessary settings to ensure compatibility with the connected
                         "membershipCanBePaidWithPromoCreditEnabled" : true,
                         "seasonTicketCanBePaidWithPromoCreditEnabled" : true,
                         "wholeWeekScheduleButtonHidden": true,
-                        "daysAheadForRegistration": 30
+                        "daysAheadForRegistration": 30,
+                        "vouchers_enabled": true,
+                        "voucherCanBePaidWithCreditCardEnabled": true,
+                        "voucherCanBePaidWithDepositEnabled": true,
+                        "voucherCanBePaidWithPromoCreditEnabled": true,
+                        "seasonTicketModuleEnabled": true,
+                        "membershipModuleEnabled": true,
+                        "reservationButtonHidden": true,
+                        "paymentGatewayType": "GOPAY",
                     }
                 ]
             }
@@ -12212,6 +12227,8 @@ For more information on services follow the subsections:
 + voucherModuleEnabled (boolean)
 + seasonTicketModuleEnabled (boolean)
 + membershipModuleEnabled (boolean)
++ reservationButtonHidden (boolean)
++ paymentGatewayType (string)2n
 + voucherCanBePaidWithCreditCardEnabled (boolean)
 + voucherCanBePaidWithDepositEnabled (boolean)
 + voucherCanBePaidWithPromoCreditEnabled (boolean)
@@ -12402,6 +12419,7 @@ For more information on services follow the subsections:
 + waitingCancelEnabled (boolean) - Whether waiting cancellation fees are enabled by the club or not. For more information see [Cancellation fees](#cancellation_fees) section. `true` if waiting cancellation fees are enabled, `false` otherwise. 
 + paymentEnabled (boolean) - Whether payments are enabled by the club or not. `true` if payments are enabled, `false` otherwise.
 + orderEnabled (boolean) - Whether reservation can be created (ordered) without the need to pay it. `true` if reservation orders are enabled, `false` otherwise.
++ reservationBlocked (boolean) - Whether reservation is blocked. `true` if it's blocked, then you can't order or pay and order at once, `false` otherwise.
 + editFee (Price) - Fees that will be charged to customer if she/he saves changes made to reservation. Always `null` for new reservation. 
 + cancelFee (Price) - Fees that will be charged to customer if she/he cancels the reservation. Always `null` for new reservation.
 + lengthIncrementMinutes (number) - If `ReservationForm.lengthIncrementMinutes` is `true` this is an increment, in minutes, that can be used to extend the reservation. Total length of the reservation, in minutes, must be divisible by the increment without a reminder. Can be `null` if reservation can be extended by any increment.
