@@ -11062,6 +11062,7 @@ Method returns details of that user.
                         "note": "",
                         "birthDate": null,
                         "termsAccepted": false,
+                        "gdprAccepted": false,
                         "login": "jurcikova",
                         "password": null,
                         "passwordAgain": null
@@ -11207,6 +11208,7 @@ Client application must be authenticated to call this service.
                 "note": "goes to fitness 2/week",
                 "zipCode": "8001",
                 "termsAccepted": true,
+                "gdprAccepted": true,
                 "login" : "ondra1",
                 "password": "aLl1sG0.d",
                 "passwordAgain" : "aLl1sG0.d"
@@ -11244,7 +11246,8 @@ Client application must be authenticated to call this service.
                         "woman": false,
                         "note": "goes to fitness 2/week",
                         "birthDate": "1988-12-04",
-                        "termsAccepted": false,
+                        "termsAccepted": true,
+                        "gdprAccepted": true,
                         "login": "ondra",
                         "activationToken": "U7bIwFUSfZqSkD9sVoVDPUPm19hjo74f"
                     }
@@ -11312,6 +11315,7 @@ Call [GET users/count](#all_users_count) service first to get total number of us
                           "note": null,
                           "birthDate": "2015-01-01",
                           "termsAccepted": false,
+                          "gdprAccepted": false,
                           "userKey": null,
                           "lastModifiedDate": "2014-07-31T14:28:37.507+0200",
                           "customerId": "51f1ca3ac0a800c851be221a0e5cffff",
@@ -11332,6 +11336,7 @@ Call [GET users/count](#all_users_count) service first to get total number of us
                           "note": "",
                           "birthDate": "1989-09-25",
                           "termsAccepted": true,
+                          "gdprAccepted": true,
                           "userKey": "s3d5c61cc0a8007600b0690ab5d6d872",
                           "lastModifiedDate": "2014-07-31T14:28:37.509+0200",
                           "customerId": "3af1fdcac0a800c851be221a0e5cffff",
@@ -11352,6 +11357,7 @@ Call [GET users/count](#all_users_count) service first to get total number of us
                           "note": "",
                           "birthDate": "1991-09-25",
                           "termsAccepted": false,
+                          "gdprAccepted": false,
                           "userKey": "a3dff61cc0a8007600b0690ab5d6d872",
                           "lastModifiedDate": "2014-07-31T14:28:37.511+0200",
                           "customerId": "21f1aaaac0a800c851be221a0e5cffff",
@@ -11372,6 +11378,7 @@ Call [GET users/count](#all_users_count) service first to get total number of us
                           "note": "some note",
                           "birthDate": "1989-09-25",
                           "termsAccepted": true,
+                          "gdprAccepted": false,
                           "userKey": "76752b8dc3a8007600661a11d49fd2d8",
                           "lastModifiedDate": "2014-07-31T14:28:37.513+0200",
                           "customerId": "51f1fdcac0a800c851be221a0e5cffff",
@@ -11392,6 +11399,7 @@ Call [GET users/count](#all_users_count) service first to get total number of us
                           "note": null,
                           "birthDate": "1965-03-15",
                           "termsAccepted": true,
+                          "gdprAccepted": false,
                           "userKey": "addfs2b8dc3a8007600455s11d49fd2d8",
                           "lastModifiedDate": "2015-06-12T15:18:37.987+0200",
                           "customerId": "51f1fdcac0a800c851be221a0e5c01ea",
@@ -11490,6 +11498,7 @@ Returns personal information of authenticated user.
                         "note": "goes to fitness 2/week",
                         "birthDate": "1988-12-04",
                         "termsAccepted": false,
+                        "gdprAccepted": false,
                         "login": "ondra",
                         "customerId": "51f1fdcac0a800c851be221a0e5c01ea"
                     }
@@ -11540,6 +11549,7 @@ Update personal information of authenticated user.
                         "note": "goes to fitness 2/week",
                         "birthDate": "1988-12-04",
                         "termsAccepted": false,
+                        "gdprAccepted": false,
                         "login": "ondra",
                         "customerId": "51f1fdcac0a800c851be221a0e5c01ea"
                     }
@@ -11590,6 +11600,7 @@ Returns personal information of authenticated user which included security infor
                         "note": null,
                         "birthDate": "2016-11-11",
                         "termsAccepted": false,
+                        "gdprAccepted": false,
                         "login": "clubspireapi",
                         "password": null,
                         "passwordAgain": null,
@@ -12270,6 +12281,7 @@ For more information on services follow the subsections:
 + note (string) - Note with additional information about the user.
 + birthDate (string) - Date of the user's birth in format **'yyyy-MM-dd'**.
 + termsAccepted (boolean) - Determines wheter the user accepts the terms and conditions of the club.
++ gdprAccepted (boolean) - Determines wheter the user accepts the security conditions of the club.
 + login (string) - Login name for the authenticated user. Never null.
 + password (string) - Password of user.
 + passwordAgain (string) - Password of user again.
@@ -12319,6 +12331,7 @@ For more information on services follow the subsections:
 + woman (boolean) - Sex of the authenticated user. `true` for woman, `false` for man. Can be `null` if unspecified.
 + note (string) - Note with additional information about the authenticated user.
 + termsAccepted (boolean) - Determines wheter the user accepts the terms and conditions of the club.
++ gdprAccepted (boolean) - Determines wheter the user accepts the security conditions of the club.
 + login (string) - Login name for the authenticated user. Never `null`.
 + customerId (string) - Customer id for the authenticated user.
 
@@ -12337,6 +12350,7 @@ For more information on services follow the subsections:
 + woman (boolean, optional) - Sex of the new user. `true` for woman, `false` for man, `null` if not specified.
 + note (string, optional) - Note with additional information about the user.
 + termsAccepted (boolean, required) - Determines wheter the user accepts the terms and conditions of the club. Must be `true`.
++ gdprAccepted (boolean) - Determines wheter the user accepts the security conditions of the club. Must be `true` if gdpr section is visible and text is filled in.
 + login (string, required) - Login name for the user. Must not be null or empty.
 + password (string, required) - Password for the user in plaintext. Must not be null or empty.
 + passwordAgain (string, required) - Password for the user in plaintext again. Must be the same as `password`.
