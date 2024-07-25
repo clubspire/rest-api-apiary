@@ -5562,7 +5562,8 @@ in the result and their attribute `matchesFilter` is set to `false`.
                               "capacity": 10,
                               "substitute": false,
                               "newReservationUrl": "https://192.168.0.242:58443/api/1.0/reservations/new?objectId=54b8cab3c0a8463201cbe89d20857a81&sportId=f27e8234c0a83332534017e05b879988&tabIndex=2&startTime=2016-12-07T18:00:00.000%2B0100",
-                              "lessonTooSoonBeforeStart": false    
+                              "lessonTooSoonBeforeStart": false,
+                              "lessonBlocked": false
                             }
                           ]
                         }
@@ -5631,7 +5632,8 @@ in the result and their attribute `matchesFilter` is set to `false`.
                               "capacity": 15,
                               "substitute": false,
                               "newReservationUrl": "https://192.168.0.242:58443/api/1.0/reservations/new?objectId=86f03614c0a8006701724be6a78c372e&sportId=86e8abd5c0a800670151aa6bad8dd825&tabIndex=0&startTime=2016-12-09T08:00:00.000%2B0100",
-                              "lessonTooSoonBeforeStart": false                            
+                              "lessonTooSoonBeforeStart": false,
+                              "lessonBlocked": false
                             },
                             {
                               "emptySpace": false,
@@ -5682,7 +5684,8 @@ in the result and their attribute `matchesFilter` is set to `false`.
                               "capacity": 10,
                               "substitute": false,
                               "newReservationUrl": "https://192.168.0.242:58443/api/1.0/reservations/new?objectId=51a5e734c0a846320070e4ce95d6c52d&sportId=86e4b176c0a8006701476fedb6eadb25&tabIndex=0&startTime=2016-12-09T09:00:00.000%2B0100",
-                              "lessonTooSoonBeforeStart": false
+                              "lessonTooSoonBeforeStart": false,
+                              "lessonBlocked": false
                             },
                             {
                               "emptySpace": false,
@@ -5733,7 +5736,8 @@ in the result and their attribute `matchesFilter` is set to `false`.
                               "capacity": 15,
                               "substitute": false,
                               "newReservationUrl": "https://192.168.0.242:58443/api/1.0/reservations/new?objectId=86f03614c0a8006701724be6a78c372e&sportId=86e8146cc0a80067010ceb7c89d162ba&tabIndex=0&startTime=2016-12-09T18:00:00.000%2B0100",
-                              "lessonTooSoonBeforeStart": false
+                              "lessonTooSoonBeforeStart": false,
+                              "lessonBlocked": false
                             }
                           ]
                         }
@@ -5802,7 +5806,8 @@ in the result and their attribute `matchesFilter` is set to `false`.
                               "capacity": 15,
                               "substitute": false,
                               "newReservationUrl": "https://192.168.0.242:58443/api/1.0/reservations/new?objectId=86f03614c0a8006701724be6a78c372e&sportId=98de2580c0a8463200e1958162127b3d&tabIndex=0&startTime=2016-12-11T18:00:00.000%2B0100",
-                              "lessonTooSoonBeforeStart": false
+                              "lessonTooSoonBeforeStart": false,
+                              "lessonBlocked": false
                             }
                           ]
                         }
@@ -12689,6 +12694,7 @@ For more information on services follow the subsections:
 + substitute (boolean) - `True` if all places for the scheduled sport are booked and customers can only create reservations as substitute (in waiting list), `false` otherwise.
 + newReservationUrl (string) - URL that can be directly used in GET request to obtain reservation settings along with new reservation data properly initilized for scheduled sport. For more information about recommended way of creating new reservation see [Create new reservation section](#create_reservation).
 + lessonTooSoonBeforeStart (string) - `True` if current lesson is too soon before start - should not be clickable. If `False` lesson should be clickable.
++ ad (string) - `True` if current lesson is blocked - should not be clickable and message about blocking should be shown after click try. If `False` lesson should be clickable.
 
 ### Tab (object)
 + index (number) - Index of tab.
