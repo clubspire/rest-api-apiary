@@ -10874,6 +10874,141 @@ Returns impulses count of season ticket(s) that can be used to reservation payme
                 ]
             }
 
+# Group Deposit
+<a name="deposit"></a>
+
++ [Pay external bill by deposit](#pay_customers_bill)
++ [Cancel external bill](#cancel_bill)
+
+## Pay external bill by deposit [/api/1.0/deposit/pay/tokens/bill]
+<a name="pay_customers_bill"></a>
+
+### Identification by token [POST]
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+            
+    + Attributes(PayTokensBill)
+
+    + Body
+
+            {
+                "token": "1234",
+                "price": 25
+            }
+            
+            
++ Response 200 (application/json)
+
+    + Attributes (ExternalSystemPayment)
+    
+    + Body 
+
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "depositAmount": 4893.00,
+                        "depositValidTo": "2025-07-25T23:59:59.999+0200",
+                        "billId": "EL-000012"
+                    }
+                ]
+            }
+
+### Pay external bill by deposit [POST /api/1.0/deposit/pay/customers/bill]
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+            
+    + Attributes(PayCustomersBill)
+
+    + Body
+
+            {
+                "price": 25
+            }
+            
+            
++ Response 200 (application/json)
+
+    + Attributes (ExternalSystemPayment)
+    
+    + Body 
+
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "depositAmount": 4893.00,
+                        "depositValidTo": "2025-07-25T23:59:59.999+0200",
+                        "billId": "EL-000012"
+                    }
+                ]
+            }
+
+## Cancel external bill [/api/1.0/deposit/cancel/bill]
+<a name="cancel_bill"></a>
+
+### Cancel external bill [POST]
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+            
+    + Attributes(CancelBill)
+
+    + Body
+
+            {
+                "billId": "EL-000010"
+            }
+            
+            
++ Response 200 (application/json)
+
+    + Attributes (ExternalSystemPayment)
+    
+    + Body 
+
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "depositAmount": 4918.00,
+                        "depositValidTo": "2025-07-25T23:59:59.999+0200",
+                        "billId": "EL-000013"
+                    }
+                ]
+            }
 
 # Group Center
 <a name="center"></a>
@@ -10884,7 +11019,7 @@ In this group are informations corresponding to club's **center**, like objects 
 + [Get occupancy of entrance object](#entrance_occupancy)
 
 ## Get all objects in center [/api/1.0/center/objects]
-<a name="entrance_occupancy"></a>
+<a name="all_objects"></a>
 
 ### Get all objects in center [GET]
 
@@ -10982,6 +11117,7 @@ For more information on services follow the subsections:
 + [All users](#all_users)
 + [All users count](#all_users_count)
 + [Deactivate user account](#deactivate_user_account)
++ [Customer info](#customer_info)
 
 ## Synchronization with external systems
 REST API provides services that can be used by external systems to synchronize data about CLUBSPIRE users. A special access role must be assigned to client application to be allowed to call these services. Currently it is only possible to retrieve users whose data has been changed since provided timestamp. For more information see [All users](#all_users) service. 
@@ -12044,9 +12180,7 @@ For more information on services follow the subsections:
                 ]
             }
 
-
-<!---
-OLD VOUCHER CREATION - Still working but it is easily abusable so we do not want to document this.
+<!--OLD VOUCHER CREATION - Still working but it is easily abusable so we do not want to document this.
 
 # Group Vouchers
 <a name="vouchers"></a>
@@ -12813,3 +12947,18 @@ For more information on services follow the subsections:
 ### ReservationBySeasonTicket (object)
 + impulsesBefore (number) - Count of usable impulses of season ticket(s) to provided reservation.
 + impulsesNeeded (number) - Count of needed impulses of season ticket(s) to pay the reservation with season tickets(s).
+
+### ExternalSystemPayment (object)
++ depositAmount (number) - Remaining amount of deposit
++ depositValidTo (string) - Deposit validity date
++ billId (string) - billId in CLUBSPIRE system
+
+### PayTokensBill (object)
++ token (string) - token/card/QR code identify customer
++ price (number) - price of bill in external system
+
+### PayCustomersBill (object)
++ price (number) - price of bill in external system
+
+### CancelBill (object)
++ billId (string) - billId in CLUBSPIRE system
