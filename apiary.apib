@@ -11173,7 +11173,7 @@ Method returns details of that user.
 
 + Response 200 (application/json)
 
-    + Attributes (UserProfile)
++ Attributes (UserProfile)
     
     + Body
 
@@ -11306,6 +11306,48 @@ Deactivates account of currently logged user, deactivates his phone number and e
 
 + Response 200 (application/json)
 
+## Customer info [/api/1.0/users/customerInfo{?token}]
+<a name="customer_info"></a>
+    
+### Customer info [GET]
+
++ Parameters 
+    + token (optional, string, `123456`)...Token/card/QR code identify customer.
+    
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "message": {
+                "httpStatus": 200,
+                "type": "INFO",
+                "code": null,
+                "clientMessage": null,
+                "verboseMessage": null,
+                "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "name": "Karel",
+                        "surname": "Testovací",
+                        "customerGroups": [
+                            "bf9c9238c0a8463200c0736dcbe49a20"
+                        ],
+                        "depositAmount": 5000.00,
+                        "depositValidTo": "2025-08-11T23:59:59.999+0200"
+                    }
+                ]
+            }
+        
+        
 ## User [/api/1.0/users]
 <a name="create_user"></a> 
 ### Create new user [POST]
