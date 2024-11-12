@@ -11167,10 +11167,10 @@ This method can be used for creating custom reset password form and sending own 
 
 
 #### Response messages
-| Code                                               | Type      | Description                                                                                                                  |
-|--------------------------------------------------- |:----------|:--------------------------------------------------------------------------|
-|`success.createPasswordToken`                       |INFO       |Returned if password token successfully created.                           |
-|`error.resetPassword.couldNotCreatePasswordToken`   |ERROR_FATAL|Returned if the user with email does not exist or when other error occucer.|
+| Code                                               | Type      | Description                                                                     |
+|--------------------------------------------------- |:----------|:--------------------------------------------------------------------------------|
+|`success.createPasswordToken`                       |INFO       |Returned if password token successfully created.                                 |
+|`error.resetPassword.couldNotCreatePasswordToken`   |ERROR_FATAL|Returned if the user with login/email does not exist or when other error occucer.|
 
 + Request (application/json)
 
