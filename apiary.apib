@@ -11109,6 +11109,7 @@ In this documentation, the term **user** stands for a customer of the club. Cust
 
 For more information on services follow the subsections: 
 + [Send reset password email](#send_reset_password_email)
++ [Get reset password token](#get_reset_password_token)
 + [Get reset password form](#get_reset_password_form)
 + [Reset password](#reset_password)
 + [Account activation](#account_activation)
@@ -11151,6 +11152,56 @@ Method sends email with the link containing address for the password change.
 
 + Response 200 (application/json)
 
+## Create reset password token [/api/1.0/users/resetPassword/getPasswordToken{?login}]
+<a name="get_reset_password_token"></a> 
+
++ Parameters 
+    + login (required, string, `clubspire@clubspire.cz`)...Email or login of user whose password was forgotten.
+  
+### Get reset password token [POST]
+
+If the user forgot his password it is also possible to just create and return reset password token. 
+Corresponding email address has to be identical with the email address filled in during the registration, otherwise an exception will be thrown.
+
+This method can be used for creating custom reset password form and sending own email with generated link that ends on custom page.
+
+
+#### Response messages
+| Code                                               | Type      | Description                                                                                                                  |
+|--------------------------------------------------- |:----------|:--------------------------------------------------------------------------|
+|`success.createPasswordToken`                       |INFO       |Returned if password token successfully created.                           |
+|`error.resetPassword.couldNotCreatePasswordToken`   |ERROR_FATAL|Returned if the user with email does not exist or when other error occucer.|
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+
++ Response 200 (application/json)
+
+    + Attributes (ResetPasswordToken)
+    
+    + Body
+
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "passwordToken": "fP7zPz6UnrmtaR1UlrEBhluTan7uFZc1"
+                    }
+                ]
+            }
+              
+            
 ## Get reset password form [/api/1.0/users/resetPassword/{resetPasswordToken}]
 <a name="get_reset_password_form"></a> 
 
@@ -12496,6 +12547,9 @@ For more information on services follow the subsections:
 ### ObjectOccupancy (object)
 + capacity (number) - Capacity of object
 + occupancy (number) - Actual occupancy of object
+
+### ResetPasswordToken (object)
++ passwordToken (string) - Created password token of user.
 
 ### UserProfile (object)
 + name (string) - Name of the authenticated user.
