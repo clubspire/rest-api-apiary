@@ -899,6 +899,7 @@ This section documents all services providing information about account of authe
 + [My season tickets history](#my_season_tickets_history)
 + [Is some season ticket purchasable by customer](#some_season_ticket_purchasable_by_customer)
 + [Get all salable season tickets](#salable_season_tickets)
++ [Refresh salable season tickets after discount code applied](#refresh_salable_season_tickets)
 + [Buy season ticket by deposit](#buy_season_ticket_by_deposit)
 + [Buy season ticket by epayment](#buy_season_ticket_by_epayment)
 + [Season ticket detail](#season_ticket_detail)
@@ -1478,7 +1479,187 @@ Get all salable membership for creating a membership form.
                                 "price": null
                             }
                         },
-                        "validFrom": null
+                        "validFrom": null,
+                        "applyCodeMessage": null,
+                        "applyCodeResult": 0,
+                        "discountCode": null
+                    }
+                ]
+            }
+            
+## Refresh salable memberships  [/api/1.0/customer-groups- /refresh]
+<a name="refresh_salable_memberships"></a>
+### Refresh salable season tickets [POST]
+Refresh salable season tickets in season ticket form after discount code was applied. 
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+            
+    + Attributes (RefreshMembershipForm)  
+
+    + Body
+ 
+            {
+                "selectedSeasonTicketTypeId": "eec20c80c0a800ae533756ccff33e3d8",
+                "discountCode": "leto30"
+            }
+            
++ Response 200 (application/json)
+
+    + Attributes (MembershipForm)  
+
+    + Body
+            
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "membershipList": [
+                            {
+                                "id": "cb035011c0a8463200a2b960749b3625",
+                                "title": "Členství CCV Dobrodružství historie",
+                                "membershipTypes": [
+                                    {
+                                        "title": "4 měsíc(ů)",
+                                        "index": 0,
+                                        "price": {
+                                            "currencyCode": "CZK",
+                                            "price": null
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "caecd464c0a846320020dc755bf1e61d",
+                                "title": "Členství CCV Osudová setkání",
+                                "membershipTypes": [
+                                    {
+                                        "title": "4 měsíc(ů)",
+                                        "index": 0,
+                                        "price": {
+                                            "currencyCode": "CZK",
+                                            "price": null
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "cb04db4dc0a846320199fd55856063c1",
+                                "title": "Členství CCV Historie zahradního umění",
+                                "membershipTypes": [
+                                    {
+                                        "title": "4 měsíc(ů)",
+                                        "index": 0,
+                                        "price": {
+                                            "currencyCode": "CZK",
+                                            "price": null
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "dcd7af60c0a833320144acecd166e5be",
+                                "title": "Placené členství - bazén",
+                                "membershipTypes": [
+                                    {
+                                        "title": "90 den (dnů)",
+                                        "index": 0,
+                                        "price": {
+                                            "currencyCode": "CZK",
+                                            "price": 3990
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "573e60c6c0a8463200c8d49490933cd0",
+                                "title": "Badmintonový klub Na Fialce",
+                                "membershipTypes": [
+                                    {
+                                        "title": "6 měsíc(ů)",
+                                        "index": 0,
+                                        "price": {
+                                            "currencyCode": "CZK",
+                                            "price": 1600
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "92a43434c0a84632009124e976232919",
+                                "title": "Kino Klub",
+                                "membershipTypes": [
+                                    {
+                                        "title": "1 rok(ů)",
+                                        "index": 0,
+                                        "price": {
+                                            "currencyCode": "CZK",
+                                            "price": 200
+                                        }
+                                    },
+                                    {
+                                        "title": "1 rok(ů)",
+                                        "index": 1,
+                                        "price": {
+                                            "currencyCode": "CZK",
+                                            "price": 100
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "4879948dc0a8020200a1fc5de47a9685",
+                                "title": "Splatkove clenstvi",
+                                "membershipTypes": [
+                                    {
+                                        "title": "1 rok(ů), splátky měsíčně, den spl. 15",
+                                        "index": 0,
+                                        "price": {
+                                            "currencyCode": "CZK",
+                                            "price": 40
+                                        }
+                                    }
+                                ]
+                            }
+                        ],
+                        "selectedMembership": {
+                            "id": "cb035011c0a8463200a2b960749b3625",
+                            "title": "Členství CCV Dobrodružství historie",
+                            "membershipTypes": [
+                                {
+                                    "title": "4 měsíc(ů)",
+                                    "index": 0,
+                                    "price": {
+                                        "currencyCode": "CZK",
+                                        "price": null
+                                    }
+                                }
+                            ]
+                        },
+                        "paymentType": null,
+                        "selectedType": {
+                            "title": "4 měsíc(ů)",
+                            "index": 0,
+                            "price": {
+                                "currencyCode": "CZK",
+                                "price": null
+                            }
+                        },
+                        "validFrom": null,
+                        "applyCodeMessage": "Slevový kód byl úspěšně použit. Některá členství byla zlevněna.",
+                        "applyCodeResult": 1,
+                        "discountCode": "leto30"
                     }
                 ]
             }
@@ -1604,7 +1785,10 @@ If payment fails, for example due to low deposit balance, an error message is re
                                     "price": 3990
                                 }
                               },
-                "validFrom": "Mon Oct 10 00:00:00 GMT+02:00 2017"
+                "validFrom": "Mon Oct 10 00:00:00 GMT+02:00 2017",
+                "applyCodeMessage": null,
+                "applyCodeResult": 0,
+                "discountCode": null
             }
             
 + Response 200 (application/json)
@@ -1715,7 +1899,10 @@ Returns paymentEntity with a url of the payment gate.
                                     "price": 3990
                                 }
                               },
-                "validFrom": "Mon Oct 10 00:00:00 GMT+02:00 2017"
+                "validFrom": "Mon Oct 10 00:00:00 GMT+02:00 2017",
+                "applyCodeMessage": null,
+                "applyCodeResult": 0,
+                "discountCode": null
             }
             
 + Response 200 (application/json)
@@ -2840,10 +3027,859 @@ Get all salable season tickets for creating a season ticket form.
                                 }
                             ]
                         },
-                        "paymentType": null
+                        "paymentType": null,
+                        "applyCodeMessage": null,
+                        "applyCodeResult": 0,
+                        "discountCode": null
                     }
                 ]
             }
+            
+## Refresh salable season tickets  [/api/1.0/season-tickets/refresh]
+<a name="refresh_salable_season_tickets"></a>
+### Refresh salable season tickets [POST]
+Refresh salable season tickets in season ticket form after discount code was applied. 
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+            
+    + Attributes (RefreshSeasonTicketForm)  
+
+    + Body
+ 
+            {
+                "selectedSeasonTicketTypeId": "eec20c80c0a800ae533756ccff33e3d8",
+                "discountCode": "leto30"
+            }
+            
++ Response 200 (application/json)
+
+    + Attributes (SeasonTicketForm)  
+
+    + Body
+    
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "seasonTicketTypeList": [
+                            {
+                                "metaInfo": null,
+                                "id": "eec20c80c0a800ae533756ccff33e3d8",
+                                "name": "Permanentka",
+                                "paidDate": null,
+                                "expireSoon": false,
+                                "shared": false,
+                                "price": {
+                                    "currencyCode": "CZK",
+                                    "price": 3250
+                                },
+                                "validity": null,
+                                "seasonTickets": [
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 1,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "MB - V Orangina 0,5 l",
+                                            "MB - V Rajec 0,33 l",
+                                            "MB - V Kofola originál",
+                                            "MB - V Kofola citrus, meloun"
+                                        ],
+                                        "validation": [
+                                            1,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    },
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 1,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "MB-  Bebe sušenky"
+                                        ],
+                                        "validation": [
+                                            1,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    }
+                                ]
+                            },
+                            {
+                                "metaInfo": null,
+                                "id": "49427ae4c0a833320b5f8a2774b9509e",
+                                "name": "Ukázková permanentka",
+                                "paidDate": null,
+                                "expireSoon": false,
+                                "shared": false,
+                                "price": {
+                                    "currencyCode": "CZK",
+                                    "price": 1050
+                                },
+                                "validity": null,
+                                "seasonTickets": [
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 1,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Bazén So,Ne,Sv.- Student, Senior, ZTP",
+                                            "Bazén Po-Pá 13:00-22:00 - Děti do 6 let (120 cm)",
+                                            "Bazén Po-Pá 13:00-22:00",
+                                            "Bazén Po-Pá 6:00-8:30 - Děti do 6 let (120 cm)",
+                                            "Bazén So,Ne,Sv. ",
+                                            "Bazén Po-Pá 13:00-22:00 - Senior, ZTP, Student",
+                                            "Bazén Po-Pá 6:00-8:30",
+                                            "Bazén So,Ne,Sv. - Děti do 6 let (120 cm)",
+                                            "Bazén Po-Pá 6:00-8:30 - Student, Senior, ZTP"
+                                        ],
+                                        "validation": [
+                                            2,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    },
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 2,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Havajská masáž Lomi Lomi 60 min./ Dagmar Drbohlavová"
+                                        ],
+                                        "validation": [
+                                            1,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    },
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 5,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Záloha Karty"
+                                        ],
+                                        "validation": [
+                                            1,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    },
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 4,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Kruh nafukovací Spider-man"
+                                        ],
+                                        "validation": [
+                                            1,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    },
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 3,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "MB - V Adelhonzener Activ",
+                                            "MB- Coca-cola  plast 0,2 l",
+                                            "MB- Chips Bohemia solené",
+                                            "MB-Tatranka",
+                                            "MB- Lízátka",
+                                            "MB-  Bebe sušenky",
+                                            "MB - V Jupík"
+                                        ],
+                                        "validation": [
+                                            1,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    }
+                                ]
+                            },
+                            {
+                                "metaInfo": null,
+                                "id": "d16fd8efc0a8463201d739a1444b7189",
+                                "name": "10 vstupů bazén Po-Pá 13:00-22:00",
+                                "paidDate": null,
+                                "expireSoon": false,
+                                "shared": false,
+                                "price": {
+                                    "currencyCode": "CZK",
+                                    "price": 950
+                                },
+                                "validity": null,
+                                "seasonTickets": [
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 10,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Bazén Po-Pá 6:00-8:30",
+                                            "Bazén Po-Pá 13:00-22:00"
+                                        ],
+                                        "validation": [
+                                            6,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    }
+                                ]
+                            },
+                            {
+                                "metaInfo": null,
+                                "id": "d185a213c0a846320132ad7b43876179",
+                                "name": "10 vstupů - Po-Pá 13:00-22:00 - Děti do 6 let (120 cm)",
+                                "paidDate": null,
+                                "expireSoon": false,
+                                "shared": false,
+                                "price": {
+                                    "currencyCode": "CZK",
+                                    "price": 550
+                                },
+                                "validity": null,
+                                "seasonTickets": [
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 10,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Bazén Po-Pá 13:00-22:00 - Děti do 6 let (120 cm)",
+                                            "Bazén Po-Pá 6:00-8:30 - Děti do 6 let (120 cm)"
+                                        ],
+                                        "validation": [
+                                            6,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    },
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 2,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Záloha Karty"
+                                        ],
+                                        "validation": [
+                                            1,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    }
+                                ]
+                            },
+                            {
+                                "metaInfo": null,
+                                "id": "0e742585c0a8463200cb4d8c04494939",
+                                "name": "10 vstupů - Po-Pá 13:00-22:00 Rodina 2+1",
+                                "paidDate": null,
+                                "expireSoon": false,
+                                "shared": false,
+                                "price": {
+                                    "currencyCode": "CZK",
+                                    "price": 1990
+                                },
+                                "validity": null,
+                                "seasonTickets": [
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 10,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Bazén Po-Pá 13:00-22:00 - Rodina 2+1"
+                                        ],
+                                        "validation": [
+                                            6,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    }
+                                ]
+                            },
+                            {
+                                "metaInfo": null,
+                                "id": "0e78c0fcc0a8463201f32d8e4b367a84",
+                                "name": "10 vstupů - Po-Pá 13:00-22:00 Rodina 2+2",
+                                "paidDate": null,
+                                "expireSoon": false,
+                                "shared": false,
+                                "price": {
+                                    "currencyCode": "CZK",
+                                    "price": 2390
+                                },
+                                "validity": null,
+                                "seasonTickets": [
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 10,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Bazén Po-Pá 13:00-22:00 - Rodina 2+2"
+                                        ],
+                                        "validation": [
+                                            6,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    }
+                                ]
+                            },
+                            {
+                                "metaInfo": null,
+                                "id": "d16d2210c0a8463201ba7f89b8ccd163",
+                                "name": "10 vstupů - Po-Pá 6:00-8:30",
+                                "paidDate": null,
+                                "expireSoon": false,
+                                "shared": false,
+                                "price": {
+                                    "currencyCode": "CZK",
+                                    "price": 850
+                                },
+                                "validity": null,
+                                "seasonTickets": [
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 10,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Bazén Po-Pá 6:00-8:30"
+                                        ],
+                                        "validation": [
+                                            6,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    }
+                                ]
+                            },
+                            {
+                                "metaInfo": null,
+                                "id": "d1793363c0a84632012c28993fc60943",
+                                "name": "10 vstupů - Po-Pá 6:00-8:30 - Děti do 6 let (120 cm)",
+                                "paidDate": null,
+                                "expireSoon": false,
+                                "shared": false,
+                                "price": {
+                                    "currencyCode": "CZK",
+                                    "price": 500
+                                },
+                                "validity": null,
+                                "seasonTickets": [
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 10,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Bazén Po-Pá 6:00-8:30 - Děti do 6 let (120 cm)"
+                                        ],
+                                        "validation": [
+                                            6,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    }
+                                ]
+                            },
+                            {
+                                "metaInfo": null,
+                                "id": "d178246cc0a84632016d6c11a17131d9",
+                                "name": "10 vstupů - So,Ne,Sv 9:00-22:00",
+                                "paidDate": null,
+                                "expireSoon": false,
+                                "shared": false,
+                                "price": {
+                                    "currencyCode": "CZK",
+                                    "price": 1050
+                                },
+                                "validity": null,
+                                "seasonTickets": [
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 10,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Bazén Po-Pá 13:00-22:00",
+                                            "Bazén Po-Pá 6:00-8:30",
+                                            "Bazén So,Ne,Sv. "
+                                        ],
+                                        "validation": [
+                                            6,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    },
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 10,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Aqua aerobic"
+                                        ],
+                                        "validation": [
+                                            6,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    },
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 1,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Záloha Karty"
+                                        ],
+                                        "validation": [
+                                            6,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    }
+                                ]
+                            },
+                            {
+                                "metaInfo": null,
+                                "id": "d18edf22c0a84632007cd5a18f57fa0e",
+                                "name": "10 vstupů - So,Ne,Sv 9:00-22:00 - Děti do 6 let (120 cm)",
+                                "paidDate": null,
+                                "expireSoon": false,
+                                "shared": false,
+                                "price": {
+                                    "currencyCode": "CZK",
+                                    "price": 600
+                                },
+                                "validity": null,
+                                "seasonTickets": [
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 10,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Bazén Po-Pá 13:00-22:00 - Děti do 6 let (120 cm)",
+                                            "Bazén Po-Pá 6:00-8:30 - Děti do 6 let (120 cm)",
+                                            "Bazén So,Ne,Sv. - Děti do 6 let (120 cm)"
+                                        ],
+                                        "validation": [
+                                            6,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    }
+                                ]
+                            },
+                            {
+                                "metaInfo": null,
+                                "id": "0e76c901c0a8463201d3844b3e3dc5ce",
+                                "name": "10 vstupů - So, Ne, Sv 9:00-22:00 Rodina 2+1",
+                                "paidDate": null,
+                                "expireSoon": false,
+                                "shared": false,
+                                "price": {
+                                    "currencyCode": "CZK",
+                                    "price": 2050
+                                },
+                                "validity": null,
+                                "seasonTickets": [
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 10,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Bazén Po-Pá 13:00-22:00 - Rodina 2+1",
+                                            "Bazén Po-Pá 6:00 - 8:30 - Rodina 2+1 ",
+                                            "Bazén So,Ne,Sv.- Rodina 2+1"
+                                        ],
+                                        "validation": [
+                                            6,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    }
+                                ]
+                            },
+                            {
+                                "metaInfo": null,
+                                "id": "0e79ec9dc0a8463201c8e3dcb1937330",
+                                "name": "10 vstupů - So, Ne, Sv 9:00-22:00 Rodina 2+2",
+                                "paidDate": null,
+                                "expireSoon": false,
+                                "shared": false,
+                                "price": {
+                                    "currencyCode": "CZK",
+                                    "price": 1715
+                                },
+                                "validity": null,
+                                "seasonTickets": [
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 10,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Bazén So,Ne,Sv.- Rodina 2+2",
+                                            "Bazén Po-Pá 6:00 - 8:30 - Rodina 2+2",
+                                            "Bazén Po-Pá 13:00-22:00 - Rodina 2+2"
+                                        ],
+                                        "validation": [
+                                            6,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    }
+                                ]
+                            },
+                            {
+                                "metaInfo": null,
+                                "id": "0e8726d1c0a8463200bbcb32d03dd254",
+                                "name": "20 vstupů Bazén",
+                                "paidDate": null,
+                                "expireSoon": false,
+                                "shared": false,
+                                "price": {
+                                    "currencyCode": "CZK",
+                                    "price": 1600
+                                },
+                                "validity": null,
+                                "seasonTickets": [
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 20,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "Bazén So,Ne,Sv. ",
+                                            "Bazén Po-Pá 6:00-8:30",
+                                            "Bazén Po-Pá 13:00-22:00"
+                                        ],
+                                        "validation": [
+                                            1,
+                                            1
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    },
+                                    {
+                                        "metaInfo": null,
+                                        "id": null,
+                                        "name": null,
+                                        "paidDate": null,
+                                        "validFrom": null,
+                                        "validTo": null,
+                                        "impulsesInitial": 1,
+                                        "impulsesActual": null,
+                                        "impulsesLimit": null,
+                                        "impulsesLimitPeriod": null,
+                                        "sportNames": null,
+                                        "productNames": [
+                                            "!!!! Kangoo robic",
+                                            "!!! AKCE Klasická masáž (19.- 22.11)"
+                                        ],
+                                        "validation": [
+                                            1,
+                                            2
+                                        ],
+                                        "historyItems": null,
+                                        "shared": false,
+                                        "expireSoon": false
+                                    }
+                                ]
+                            }
+                        ],
+                        "validFrom": null,
+                        "selectedSeasonTicketType": {
+                            "metaInfo": null,
+                            "id": "eec20c80c0a800ae533756ccff33e3d8",
+                            "name": "Permanentka",
+                            "paidDate": null,
+                            "expireSoon": false,
+                            "shared": false,
+                            "price": {
+                                "currencyCode": "CZK",
+                                "price": 1593
+                            },
+                            "validity": null,
+                            "seasonTickets": [
+                                {
+                                    "metaInfo": null,
+                                    "id": null,
+                                    "name": null,
+                                    "paidDate": null,
+                                    "validFrom": null,
+                                    "validTo": null,
+                                    "impulsesInitial": 1,
+                                    "impulsesActual": null,
+                                    "impulsesLimit": null,
+                                    "impulsesLimitPeriod": null,
+                                    "sportNames": null,
+                                    "productNames": [
+                                        "MB - V Orangina 0,5 l",
+                                        "MB - V Rajec 0,33 l",
+                                        "MB - V Kofola originál",
+                                        "MB - V Kofola citrus, meloun"
+                                    ],
+                                    "validation": [
+                                        1,
+                                        2
+                                    ],
+                                    "historyItems": null,
+                                    "shared": false,
+                                    "expireSoon": false
+                                },
+                                {
+                                    "metaInfo": null,
+                                    "id": null,
+                                    "name": null,
+                                    "paidDate": null,
+                                    "validFrom": null,
+                                    "validTo": null,
+                                    "impulsesInitial": 1,
+                                    "impulsesActual": null,
+                                    "impulsesLimit": null,
+                                    "impulsesLimitPeriod": null,
+                                    "sportNames": null,
+                                    "productNames": [
+                                        "MB-  Bebe sušenky"
+                                    ],
+                                    "validation": [
+                                        1,
+                                        2
+                                    ],
+                                    "historyItems": null,
+                                    "shared": false,
+                                    "expireSoon": false
+                                }
+                            ]
+                        },
+                        "paymentType": null,
+                        "applyCodeMessage": "Slevový kód byl úspěšně použit. Některé permanentky byly zlevněny.",
+                        "applyCodeResult": 1,
+                        "discountCode": "leto30"
+                    }
+                ]
+            }
+            
+            
             
 ## Buy season ticket by deposit [/api/1.0/season-tickets/new/pay]
 <a name="buy_season_ticket_by_deposit"></a>
@@ -3638,7 +4674,10 @@ If payment fails, for example due to low deposit balance, an error message is re
                                 }
                             ]
                         },
-                        "paymentType": "DEPOSIT"
+                        "paymentType": "DEPOSIT",
+                        "applyCodeMessage": null,
+                        "applyCodeResult": 0,
+                        "discountCode": null
                     }
             
 + Response 200 (application/json)
@@ -4421,8 +5460,11 @@ Returns paymentEntity with a url of the payment gate.
                     }
                 ]
             },
-            "paymentType": "EPAYMENT"
-            }
+            "paymentType": "EPAYMENT",
+            "applyCodeMessage": null,
+            "applyCodeResult": 0,
+            "discountCode": null
+        }
             
 + Response 200 (application/json)
 
@@ -11950,6 +12992,10 @@ Method returns all necessary settings to ensure compatibility with the connected
                         "membershipModuleEnabled": true,
                         "reservationButtonHidden": true,
                         "paymentGatewayType": "GOPAY",
+                        "discountCodeEnabled": true,
+                        "qrRefreshInSeconds": 30,
+                        "qrScreenOnlyOneDevice": true,
+                        "qrProfilePhotoRequired": true
                     }
                 ]
             }
@@ -12359,6 +13405,13 @@ For more information on services follow the subsections:
     + DEPOSIT
     + EPAYMENT 
 + validFrom (string) - Beginning of the validity of the season ticket. Never `null`. See [JSON date serialization](#serialization) for detailed information about date formats.
++ applyCodeMessage (string) - Message displayed after trying to apply a discount code.
++ applyCodeResult (number) - 1 if discount code applied correctly. 0 if not.
++ discountCode (string) - Applied discount code.
+
+### RefreshSeasonTicketForm (object)
++ selectedSeasonTicketTypeId (string) - Id of selected season ticket type
++ discountCode (string)
 
 ### MembershipForm (object)
 + membershipList (array[Membership]) - List of memberships which a logged user can buy
@@ -12369,6 +13422,14 @@ For more information on services follow the subsections:
     + EPAYMENT 
 + selectedType (MembershipType) - Selected type of the membership
 + validFrom (string) - Beginning of the validity of the membership. Never `null`. See [JSON date serialization](#serialization) for detailed information about date formats.
++ applyCodeMessage (string) - Message displayed after trying to apply a discount code.
++ applyCodeResult (number) - 1 if discount code applied correctly. 0 if not.
++ discountCode (string) - Applied discount code.
+
+### RefreshMembershipForm (object)
++ selectedMembershipId (string) - Id of selected membership. 
++ selectedTypeIndex (string) - Index of selected type of membership.
++ discountCode (string)
 
 ### Membership (object)
 + id (string) - Unique Id identifying the membership
@@ -12475,6 +13536,10 @@ For more information on services follow the subsections:
 + voucherCanBePaidWithCreditCardEnabled (boolean)
 + voucherCanBePaidWithDepositEnabled (boolean)
 + voucherCanBePaidWithPromoCreditEnabled (boolean)
++ discountCodeEnabled (boolean)
++ qrRefreshInSeconds (number)
++ qrScreenOnlyOneDevice (boolean)
++ qrProfilePhotoRequired (boolean)
 
 ### User credentials authorization (object)
 + `grant_type` (required, string) - Value MUST be set to "password".
