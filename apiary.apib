@@ -899,7 +899,7 @@ This section documents all services providing information about account of authe
 + [My season tickets history](#my_season_tickets_history)
 + [Is some season ticket purchasable by customer](#some_season_ticket_purchasable_by_customer)
 + [Get all salable season tickets](#salable_season_tickets)
-+ [Refresh salable season tickets after discount code applied](#refresh_salable_season_tickets)
++ [Refresh salable season tickets after discount code was applied](#refresh_salable_season_tickets)
 + [Buy season ticket by deposit](#buy_season_ticket_by_deposit)
 + [Buy season ticket by epayment](#buy_season_ticket_by_epayment)
 + [Season ticket detail](#season_ticket_detail)
@@ -907,6 +907,7 @@ This section documents all services providing information about account of authe
 + [My memberships history](#my_memberships_history)
 + [Is some membership purchasable by customer](#some_membership_purchasable_by_customer)
 + [Get all salable memberships](#salable_memberships)
++ [Refresh salable memberships after discount code was applied](#refresh_salable_memberships)
 + [Buy membership by deposit](#buy_membership_by_deposit)
 + [Buy membership by epayment](#buy_membership_by_epayment)
 + [Pay membership repayment by deposit](#pay_membership_repayment_by_deposit)
@@ -1487,10 +1488,10 @@ Get all salable membership for creating a membership form.
                 ]
             }
             
-## Refresh salable memberships  [/api/1.0/customer-groups- /refresh]
+## Refresh salable memberships  [/api/1.0/customer-groups/refresh]
 <a name="refresh_salable_memberships"></a>
-### Refresh salable season tickets [POST]
-Refresh salable season tickets in season ticket form after discount code was applied. 
+### Refresh salable memberships [POST]
+Refresh salable memberships in membership form after discount code was applied. 
 
 + Request (application/json)
 
@@ -1503,7 +1504,8 @@ Refresh salable season tickets in season ticket form after discount code was app
     + Body
  
             {
-                "selectedSeasonTicketTypeId": "eec20c80c0a800ae533756ccff33e3d8",
+                "selectedMembershipId": "cb035011c0a8463200a2b960749b3625",
+                "selectedTypeIndex": 0
                 "discountCode": "leto30"
             }
             
@@ -1541,7 +1543,7 @@ Refresh salable season tickets in season ticket form after discount code was app
                                 ]
                             },
                             {
-                                "id": "caecd464c0a846320020dc755bf1e61d",
+                                "id": "cb035011c0a8463200a2b960749b3625",
                                 "title": "Členství CCV Osudová setkání",
                                 "membershipTypes": [
                                     {
