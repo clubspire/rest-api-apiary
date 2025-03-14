@@ -9242,7 +9242,15 @@ If invalid data is provided error message is returned to the caller. For complet
                 "note": null,
                 "emailNotificationBeforeMinutes": null,
                 "smsNotificationBeforeMinutes": null,
-                "pushNotificationBeforeMinutes": null
+                "pushNotificationBeforeMinutes": null,
+                "discountCode": null,
+                "price": {
+                  "currencyCode": "CZK",
+                  "price": 100,
+                  "unitPrice": 100,
+                  "chargedForPersonCount": true,
+                  "chargedForLengthMinutes": null
+                }
             }
 
 + Response 200 (application/json)
@@ -9460,7 +9468,15 @@ If invalid data is provided error message is returned to the caller. For complet
                 "note": null,
                 "emailNotificationBeforeMinutes": null,
                 "smsNotificationBeforeMinutes": null,
-                "pushNotificationBeforeMinutes": null
+                "pushNotificationBeforeMinutes": null,
+                "discountCode": null,
+                "price": {
+                  "currencyCode": "CZK",
+                  "price": 100,
+                  "unitPrice": 100,
+                  "chargedForPersonCount": true,
+                  "chargedForLengthMinutes": null
+                },
             }
             
 + Response 200 (application/json)
@@ -13700,6 +13716,8 @@ For more information on services follow the subsections:
 + emailNotificationBeforeMinutes (number, required) - How long, in minutes, before reservation start should the system send customer an e-mail about reservation. `Null` can be used in case the customer doesn't wish to be notified.
 + smsNotificationBeforeMinutes (number, required) - How long, in minutes, before reservation start should the system send customer a SMS about reservation. `Null` can be used in case the customer doesn't wish to be notified. 
 + pushNotificationBeforeMinutes (number, required) - How long, in minutes, before reservation start should the system send customer a push notification about reservation. `Null` can be used in case the customer doesn't wish to be notified. 
++ discountCode (string) - Applied discount code.
++ price (SportPrice) - Price of reservation.
 
 ### EditReservation (object)
 + id (string, required) - Id of the reservation that should be saved.
