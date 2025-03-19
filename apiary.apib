@@ -5473,22 +5473,22 @@ Returns paymentEntity with a url of the payment gate.
     + Attributes (PaymentResponse)  
 
     + Body
- 
+
             {
-                "message": {
-                    "httpStatus": 200,
-                    "type": "INFO",
-                    "code": null,
-                    "clientMessage": null,
-                    "verboseMessage": null,
-                    "docUri": null
-                },
-                "data": [
-                    {
-                        "metaInfo": null,
+              "message": {
+                "httpStatus": 200,
+                "type": "INFO",
+                "code": null,
+                "clientMessage": null,
+                "verboseMessage": null,
+                "docUri": null
+              },
+              "data": [
+                   {
+                         "metaInfo": null,
                         "orderNumber": "3091463609",
                         "url": "https://gw.sandbox.gopay.com/gw/v3/d7c86688060a506b010dfeede8aea6a8"
-                    }
+                   }
                 ]
             }
         
@@ -10839,15 +10839,13 @@ If payment fails, for example due to low deposit balance, an error message is re
     
             Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
             
-    + Attributes (object)
-        + type (enum[string])- How should the reservation be paid. 
-            + members
-                + SEASON_TICKET
+    + Attributes (Payment)
     
     + Body
         
             {
-                "type":"SEASON_TICKET"
+                "type":"SEASON_TICKET",
+                "discountCode": "sleva30"
             }
   
 + Response 200 (application/json)
@@ -10881,7 +10879,7 @@ If payment fails, an error message is returned to the caller. For complete list 
     
             Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
             
-    + Attributes(CreateReservation)
+    + Attributes(Reservation)
 
     + Body
 
@@ -10903,7 +10901,8 @@ If payment fails, an error message is returned to the caller. For complete list 
                 "substituteAcceptanceMinutesBefore":0,
                 "substituteEmailNotification":false,
                 "substituteSMSNotification":false,
-                "substitutePushNotification":false
+                "substitutePushNotification":false,
+                "discountCode": "sleva30"
             } 
   
 + Response 200 (application/json)
@@ -13352,7 +13351,8 @@ For more information on services follow the subsections:
                 ]
             }
 
-<!--OLD VOUCHER CREATION - Still working but it is easily abusable so we do not want to document this.
+<!--- 
+OLD VOUCHER CREATION - Still working but it is easily abusable so we do not want to document this.
 
 # Group Vouchers
 <a name="vouchers"></a>
