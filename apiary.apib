@@ -1790,7 +1790,7 @@ If payment fails, for example due to low deposit balance, an error message is re
                 "validFrom": "Mon Oct 10 00:00:00 GMT+02:00 2017",
                 "applyCodeMessage": null,
                 "applyCodeResult": 0,
-                "discountCode": null
+                "discountCode": "sleva30"
             }
             
 + Response 200 (application/json)
@@ -1904,7 +1904,7 @@ Returns paymentEntity with a url of the payment gate.
                 "validFrom": "Mon Oct 10 00:00:00 GMT+02:00 2017",
                 "applyCodeMessage": null,
                 "applyCodeResult": 0,
-                "discountCode": null
+                "discountCode": "sleva30"
             }
             
 + Response 200 (application/json)
@@ -4679,7 +4679,7 @@ If payment fails, for example due to low deposit balance, an error message is re
                         "paymentType": "DEPOSIT",
                         "applyCodeMessage": null,
                         "applyCodeResult": 0,
-                        "discountCode": null
+                        "discountCode": "sleva30"
                     }
             
 + Response 200 (application/json)
@@ -5465,7 +5465,7 @@ Returns paymentEntity with a url of the payment gate.
             "paymentType": "EPAYMENT",
             "applyCodeMessage": null,
             "applyCodeResult": 0,
-            "discountCode": null
+            "discountCode": "sleva30"
         }
             
 + Response 200 (application/json)
@@ -8821,8 +8821,7 @@ If invalid data is provided error message is returned to the caller. For complet
 
 + Response 200 (application/json)
 
-    + Attributes (object)
-        + data (array[ReservationForm, Reservation])
+    + Attributes (array[Reservation, ReservationForm])
         
     + Body
 
@@ -8973,8 +8972,10 @@ If invalid data is provided error message is returned to the caller. For complet
                         "substituteEmailNotification": false,
                         "substituteSmsNotification": false,
                         "substitutePushNotification": false,
-                        "temporalReservation": false,
-                        "temporalReservationValidTo": null
+                        "temporary": false,
+                        "temporaryValidTo": null,
+                        "moreSports": false,
+                        "discountCode": null
                     }
                 ]
             }
@@ -9018,10 +9019,8 @@ If invalid data is provided error message is returned to the caller. For complet
 
 + Response 200 (application/json)
 
-    + Attributes (object)
-        + reservationForm (ReservationForm)
-        + reservation (Reservation)
-    
+    + Attributes (ReservationDetail)
+
     + Body
 
             {
@@ -9036,6 +9035,9 @@ If invalid data is provided error message is returned to the caller. For complet
               "data": [
                 {
                   "metaInfo": null,
+                  "discountCode": null,
+                  "applyCodeMessage": null,
+                  "applyCodeResult": 0,
                   "reservationForm": {
                     "metaInfo": null,
                     "sports": [
@@ -9178,7 +9180,8 @@ If invalid data is provided error message is returned to the caller. For complet
                     "substitutePushNotification": false,
                     "temporary": false,
                     "temporaryValidTo": null,
-                    "moreSports": false
+                    "moreSports": false,
+                    "discountCode": null
                     }
                 }
               ]
@@ -9404,8 +9407,10 @@ If invalid data is provided error message is returned to the caller. For complet
                         "substituteEmailNotification": false,
                         "substituteSmsNotification": false,
                         "substitutePushNotification": false,
-                        "temporalReservation": false,
-                        "temporalReservationValidTo": null
+                        "temporary": false,
+                        "temporaryValidTo": null,
+                        "moreSports": false,
+                        "discountCode": null
                     }
                 ]
             }
@@ -9469,7 +9474,7 @@ If invalid data is provided error message is returned to the caller. For complet
                 "emailNotificationBeforeMinutes": null,
                 "smsNotificationBeforeMinutes": null,
                 "pushNotificationBeforeMinutes": null,
-                "discountCode": null,
+                "discountCode": "sleva30",
                 "price": {
                   "currencyCode": "CZK",
                   "price": 100,
@@ -9481,9 +9486,7 @@ If invalid data is provided error message is returned to the caller. For complet
             
 + Response 200 (application/json)
 
-    + Attributes (object)
-        + reservationForm (ReservationForm)
-        + reservation (Reservation)
+    + Attributes (ReservationDetail)
         
     + Body
 
@@ -9499,6 +9502,9 @@ If invalid data is provided error message is returned to the caller. For complet
               "data": [
                 {
                   "metaInfo": null,
+                  "discountCode": null,
+                  "applyCodeMessage": "Slevový kód byl úspěšně uplatněn.",
+                  "applyCodeResult": 1,
                   "reservationForm": {
                     "metaInfo": null,
                     "sports": [
@@ -9636,7 +9642,8 @@ If invalid data is provided error message is returned to the caller. For complet
                     "substitutePushNotification": false,
                     "temporary": false,
                     "temporaryValidTo": null,
-                    "moreSports": false
+                    "moreSports": false,
+                    "discountCode": null
                   }
                 }
               ]
@@ -9795,7 +9802,8 @@ Recommended way to create new reservation is to follow these steps:
                       "substitutePushNotification": false,
                       "temporary": false,
                       "temporaryValidTo": null,
-                      "moreSports": false
+                      "moreSports": false,
+                      "discountCode": null
                     }
                   ]
                 }
@@ -9980,8 +9988,10 @@ If some error occurs during retreiving reservation data error message is returne
                             "substituteEmailNotification": false,
                             "substituteSmsNotification": false,
                             "substitutePushNotification": false,
-                            "temporalReservation": false,
-                            "temporalReservationValidTo": null
+                            "temporary": false,
+                            "temporaryValidTo": null,
+                            "moreSports": false,
+                            "discountCode": null
                         }
                     ]
                 }
@@ -10137,8 +10147,10 @@ Fee amount is defined by the club and depends on sport, customer group of the us
                           "substituteEmailNotification": false,
                           "substituteSmsNotification": false,
                           "substitutePushNotification": false,
-                          "temporalReservation": false,
-                          "temporalReservationValidTo": null
+                          "temporary": false,
+                          "temporaryValidTo": null,
+                          "moreSports": false,
+                          "discountCode": null
                       }
                   ]
               }
@@ -10332,7 +10344,8 @@ If some error occurs during retreiving reservation data error message is returne
                     "substitutePushNotification": false,
                     "temporary": false,
                     "temporaryValidTo": null,
-                    "moreSports": false
+                    "moreSports": false,
+                    "discountCode": null
                   }
                 }
               ]
@@ -10527,7 +10540,8 @@ If some error occurs during retreiving reservation data error message is returne
                     "substitutePushNotification": false,
                     "temporary": false,
                     "temporaryValidTo": null,
-                    "moreSports": false
+                    "moreSports": false,
+                    "discountCode": null
                   }
                 }
               ]
@@ -10610,15 +10624,13 @@ If payment fails, for example due to low deposit balance, an error message is re
     
             Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
             
-    + Attributes (object)
-        + type (enum[string])- How should the reservation be paid. 
-            + members
-                + DEPOSIT
-    
+    + Attributes (Payment)
+
     + Body
         
             {
-                "type":"DEPOSIT"
+                "type":"DEPOSIT",
+                "discountCode": "sleva30",
             }
   
 + Response 200 (application/json)
@@ -10652,7 +10664,7 @@ If payment fails, for example due to low deposit balance, an error message is re
     
             Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
             
-    + Attributes(CreateReservation)
+    + Attributes(Reservation)
 
     + Body
 
@@ -10674,7 +10686,8 @@ If payment fails, for example due to low deposit balance, an error message is re
                 "substituteAcceptanceMinutesBefore":0,
                 "substituteEmailNotification":false,
                 "substituteSMSNotification":false,
-                "substitutePushNotification":false
+                "substitutePushNotification":false,
+                "discountCode": "sleva30"
             } 
   
 + Response 200 (application/json)
@@ -10699,7 +10712,8 @@ Returns payment entity object which contains url of the payment gate.
     + Body
         
             {
-                "type":"EPAYMENT"
+                "type":"EPAYMENT",
+                "discountCode": "sleva30"
             }
   
 + Response 200 (application/json)
@@ -10741,7 +10755,7 @@ Returns payment entity object which contains url of the payment gate.
     
             Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
             
-    + Attributes(CreateReservation)
+    + Attributes(Reservation)
 
     + Body
 
@@ -10763,7 +10777,8 @@ Returns payment entity object which contains url of the payment gate.
                 "substituteAcceptanceMinutesBefore":0,
                 "substituteEmailNotification":false,
                 "substituteSMSNotification":false,
-                "substitutePushNotification":false
+                "substitutePushNotification":false,
+                "discountCode": "sleva30"
             } 
   
 + Response 200 (application/json)
@@ -13489,9 +13504,12 @@ For more information on services follow the subsections:
     + HR
     + IT
     + ES
++ discountCode (string) - Applied discount code.
+
 ### PaymentResponse (object)
 + orderNumber (string) - Order number for check status of payment.
 + url (string) - Pay gateway URL
+
 ### FcmMessage (object)
 + multicastId (string) - Unique ID (number) identifying the multicast message.
 + messagesIds (array[string]) - String specifying a unique ID for each successfully processed message.
@@ -13835,6 +13853,7 @@ For more information on services follow the subsections:
 + temporary (boolean) - Whether the reservation is temporary. Temporary reservation is valid only for short time, typically for 30 minutes. If the reservation is not paid within the limit it is automatically removed. `True` if the reservation is temporary, `false` otherwise. Always `false` for new reservation.
 + temporaryValidTo (string) - Date and time till which the temporary reservation is valid. After this time it is automatically removed. Always `null` for new reservation. See [JSON date serialization](#serialization) for detailed information about date formats.
 + moreSports (boolean) - Wheter the reservation is over 2 reservation zones.
++ discountCode (string) - Applicated discount code for this resevation.
 
 ### Sport (object)
 + id (string) - Unique identifier of the sport.
@@ -14143,3 +14162,9 @@ For more information on services follow the subsections:
 
 ### CancelBill (object)
 + billId (string) - billId in CLUBSPIRE system
+
+### ReservationDetail (object)
++ reservation (Reservation)
++ reservationForm (ReservationForm)
++ applyCodeMessage (string)
++ applyCodeResult (number)
