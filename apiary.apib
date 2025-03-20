@@ -20,6 +20,8 @@ For more information on authentication and services follow the subsections:
 + [Firebase Cloud Messaging - FCM notifications](#fcm_notifications)
 + [Tabs](#tabs)
 + [Version](#version)
++ [QR section security](#qr_access_security)
+
 
 ## Group Security
 <a name="security"></a>
@@ -12141,7 +12143,10 @@ For more information on services follow the subsections:
 + [All users](#all_users)
 + [All users count](#all_users_count)
 + [Deactivate user account](#deactivate_user_account)
++ [Logout user](#logout_user)
 + [Customer info](#customer_info)
++ [Create user with profile photo](#create_user_with_profile_photo)
++ [Add profile photo to user](#add_profile_photo)
 
 ## Synchronization with external systems
 REST API provides services that can be used by external systems to synchronize data about CLUBSPIRE users. A special access role must be assigned to client application to be allowed to call these services. Currently it is only possible to retrieve users whose data has been changed since provided timestamp. For more information see [All users](#all_users) service. 
@@ -12371,6 +12376,21 @@ Deactivates account of currently logged user, deactivates his phone number and e
 |--------------------------------------------------- |:------------------|:-----------------------------------------------|
 |`success.user.deactivated`                          |INFO               |Returned if the account has been successfully activated.|
 |`error.deactivation.failed`                         |ERROR_FATAL        |Returned if there is an error.|
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+
++ Response 200 (application/json)
+
+## Logout user [/api/1.0/users/logout]
+<a name="logout_user"></a>
+
+### Deactivate account [GET]
+
+Logout of currently logged user.
 
 + Request (application/json)
 
@@ -12869,6 +12889,114 @@ Returns personal information of authenticated user which included security infor
                     }
                 ]
             }
+
+## User with profile photo [/api/1.1/users]
+<a name="create_user_with_profile_photo"></a> 
+### Create new user with profile photo [POST]
+
+Creates new user with profile photo for accessing the reservation system of the club as a customer.
+
+Client application must be authenticated to call this service.
+
+<a name="response_messages13"></a> 
+### Response messages
+|Name                             |Type                        |Description|
+|:--------------------------------|:---------------------------|:----------|
+|`success.registration`           |INFO                        |Returned if new user has been registered successfully.|
+|`warning.registration.loginExist`|ERROR_RECOVERABLE           |Returned if given login name already exists.|
+|`error.registration.invalidData` |ERROR_RECOVERABLE           |General message returned if provided data was not valid. More detailed information might be retrieved from `fieldErrors` attribute of the response message.|
+|`error.registration.disabled`    |ERROR_FATAL                 |Returned if registration of new users is disabled by the club.|
+|`error.registration.failed`      |ERROR_FATAL                 |General message returned if registration failed due to unexpected error.|
+
++ Request (multipart/form-data)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+
+    + Attributes (object)
+        + newUserEntity (NewUser, required) - Part of Multipart - user entity in json (below in Body)
+        + profilePicture (object) - Part of Multipart - profile photo in binary 
+    
+    + Body 
+    
+            {
+                "name": "Ondra",
+                "surname" : "Novak",
+                "birthDate" : "1987-24-04",
+                "email" : "ondra.novak@somewhere.com",
+                "streetName" : "Long Street",
+                "houseNumber" : "12",
+                "city" : "City Bowl",
+                "country": "South Africa",
+                "phoneCode": "+27",
+                "phone": "21 548 1245",
+                "woman": false,
+                "note": "goes to fitness 2/week",
+                "zipCode": "8001",
+                "termsAccepted": true,
+                "gdprAccepted": true,
+                "login" : "ondra1",
+                "password": "aLl1sG0.d",
+                "passwordAgain" : "aLl1sG0.d"
+                "registrationNumber": "001234"
+            }
+
+
++ Response 200 (application/json)
+
+    + Body
+
+                {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": "success.registration",
+                    "clientMessage": "Registration successful.",
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "registrationNumber": 1234
+                        "name": "Ondra",
+                        "surname": "Novak",
+                        "phoneCode": "+27",
+                        "phone": "21 548 1245",
+                        "email": "ondra.novak@somewhere.com",
+                        "streetName": "Long Street",
+                        "houseNumber": "12",
+                        "city": "City Bowl",
+                        "zipCode": "8001",
+                        "country": "South Africa",
+                        "woman": false,
+                        "note": "goes to fitness 2/week",
+                        "birthDate": "1988-12-04",
+                        "termsAccepted": true,
+                        "gdprAccepted": true,
+                        "login": "ondra",
+                        "activationToken": "U7bIwFUSfZqSkD9sVoVDPUPm19hjo74f"
+                    }
+                ]
+            }
+            
+## Add profile photo to user [/api/1.0/users/me/profilePhoto]
+<a name="add_profile_photo"></a> 
+### Add profile photo to user [POST]
+
+Sets profile photo to currently logged user.
+
++ Request (multipart/form-data)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+
+    + Attributes (object)
+        + file (object) - Part of Multipart - profile photo in binary 
+
++ Response 200 (application/json)
 
 # Group Settings
 <a name="settings"></a>
@@ -13376,6 +13504,99 @@ For more information on services follow the subsections:
     + Body
     
             true
+
+# Group QR code access security
+<a name="qr_access_security"></a>
+
+Screen with QR code in mobile application can be additionally secured in two ways.
+The first way is to limit the QR screen to only one physical device (called main device).
+The second way is to limit the QR screen to only customers with an uploaded profile photo.
+
++ [Check QR code access](#check_qr_code_access)
++ [Set new main device](#set_new_main_device)
+
+## Check QR code access [/api/1.0/qr-access]
+<a name="check_qr_code_access"></a>
+
+Checks if user can visit QR screen with current device.
+
+### Check QR code access [POST]
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+            
+    + Attributes(QRAccessCode)
+
+    + Body
+
+            {
+                "qrAccessCode": "adHD5SAFG27"
+            }
+            
+            
++ Response 200 (application/json)
+
+    + Attributes (QRAccessCodeCheck)
+    
+    + Body 
+
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "qrAccessCodeIsOk": false,
+                        "qrAccessCodeIsSet": true,
+                        "canChangeNow": false,
+                        "userHasProfilePhotoSet": true
+                    }
+                ]
+            }
+
+## Set new main device [/api/1.0/qr-access/new]
+<a name="set_new_main_device"></a>
+
+Sets current device as main. QrAccessCode from response is later used for authentication.
+
+### Set new main device [GET]
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+    
+
++ Response 200 (application/json)
+
+    + Attributes (QRAccessCode)
+    
+    + Body 
+
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "qrAccessCode": "adHD5SAFG27"
+                    }
+                ]
+            }           
 
 ## Data Structures
 
@@ -14117,3 +14338,12 @@ For more information on services follow the subsections:
 + reservationForm (ReservationForm)
 + applyCodeMessage (string)
 + applyCodeResult (number)
+
+### QRAccessCode (object)
++ qrAccessCode (string) - qr access code in customer's device
+
+### QRAccessCodeCheck (object)
++ qrAccessCodeIsOk (boolean) - true if the sent qr access code is assigned to the customer (=successfully verified), or if qrScreenOnlyOneDevice = false
++ qrAccessCodeIsSet (boolean) - true if the customer already has a qr access code in the DB
++ canChangeNow (boolean) - true if the customer can set/reset the main device, i.e. whether he can declare this device as the main one (either he has not set one yet, or the number of days has already expired since the last setting on another device)
++ userHasProfilePhotoSet (boolean) - true if the customer has a profile photo set when required, or when qrProfilePhotoRequired = false
