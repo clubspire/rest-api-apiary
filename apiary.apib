@@ -5712,6 +5712,7 @@ If payment fails, for example due to low deposit balance, an error message is re
                 "voucher": {
                     "note": "Krásné narozeniny",
                     "personName": "David Novák",
+                    "price": 350hre,
                     "value": 350,
                     "validFrom": "2023-11-03T00:00:00.000+0000"
                   }
@@ -5740,6 +5741,7 @@ Returns paymentEntity with a url of the payment gate.
                 "voucher": {
                     "note": "K svátku",
                     "personName": "Jan Novák",
+                    "price": 500,
                     "value": 500,
                     "validFrom": "2023-11-03T00:00:00.000+0000"
                   }
@@ -13656,7 +13658,8 @@ Sets current device as main. QrAccessCode from response is later used for authen
 + note (string) - A note that can appear on the voucher can be used to write the dedication of the voucher. Could be null.
 + personName (string) - Name of the person for whom the voucher was purchased. Could be null. 
 + validFrom (string) - Beginning of the validity of the membership. Never `null`. See [JSON date serialization](#serialization) for detailed information about date formats.
-    
++ price (number) - Price of voucher - rounded value by currency type
+
 ### Payment (object)
 + amount (string, required)) - Amount of the payment.
 + lang (enum[string]) - Parameter defines language of the payment gateway.
