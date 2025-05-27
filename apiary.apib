@@ -13119,7 +13119,9 @@ Method returns all necessary settings to ensure compatibility with the connected
                         "discountCodeEnabled": true,
                         "qrRefreshInSeconds": 30,
                         "qrScreenOnlyOneDevice": true,
-                        "qrProfilePhotoRequired": true
+                        "qrProfilePhotoRequired": true,
+                        "registrationUnder18Text": "Tento soubor vyplněný zákonným zástupcem přineste s sebou v den dokončení registrace: https://google.com/file.pdf",
+                        "registrationUnder18EnglishText": "Bring this file, filled out by your legal representative, with you on the day of registration completion: https://google.com/file.pdf"
                     }
                 ]
             }
@@ -13775,6 +13777,8 @@ Sets current device as main. QrAccessCode from response is later used for authen
 + qrRefreshInSeconds (number)
 + qrScreenOnlyOneDevice (boolean)
 + qrProfilePhotoRequired (boolean)
++ registrationUnder18Text (string)
++ registrationUnder18EnglishText (string)
 
 ### User credentials authorization (object)
 + `grant_type` (required, string) - Value MUST be set to "password".
