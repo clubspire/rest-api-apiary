@@ -6485,7 +6485,7 @@ For more information on services follow the subsections:
     + instructorId (optional, string, `null`)...Sets the filter to instructor of given id. By default, schedule for all activities, regardless of their instructors, is returned. If the filter is set to instructor only schedule for activities that are taught by given instructor is returned. In addition, the filter can be set to `full=true`. In this case schedule for all activities is returned and all sports that are tought by instructor who differs from the provided one have attribute `matchesFilter` set to `false`.
     + full(optional, boolean, `false`)...By default, the service returns only schedule for rest of the week (without past days) with results filtered according to given `activityId` and `instructorId`. Value true can be used to retrieve schedule for the whole week including past days and filtered data. Sports that do not match the filter are included in the result and their attribute `matchesFilter` is set to `false`.
 
-### Get week time line [GET]
+### Get week timeline [GET]
 
 Week timeline represents schedule for the whole week. It contains only sports of week activities as defined in [Week activities](#week_activities)
 section.
@@ -8734,7 +8734,7 @@ Reservation lifecycle is controlled by the system or by the customer's actions. 
     + `edited` by a customer without changing the state
     + `canceled` by a customer with changing the state to **CANCELED**
     + `paid` by a customer with changing the state to *PAID**
-    + `removed` by the system if `temporary reservation module` is enabled for the club and the reservation hadn't been paid within specific time limit. Usually the limit is set to 30 minutes. If temporary reservation module is disabled reservations stay in their current state.
+    + `removed` by the system if `temporary reservation module` is enabled for the club and the reservation hadn't been paid within specific  time limit. Usually the limit is set to 30 minutes. If temporary reservation module is disabled reservations stay in their current state.
 + **DELETED** - final state of reservation that was removed by customer or the system. Deleted reservations are permanently removed and cannot be retrieved again. Therefore, it is not actually a real state of reservation. It is defined just for completeness of the reservation state machine.
 + **PAID** - state after reservation was `paid` by customer. CLUBSPIRE API provides a way to create and pay reservation in a single step so this could also be the state of newly `created` and `paid` reservation.
 + **CANCELED** - final state of reservation that was `canceled` by customer. Canceled reservations can be retrieved and viewed by the owner.
