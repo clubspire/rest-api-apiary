@@ -14136,6 +14136,7 @@ ri
 + activity (Activity) - Activity assigned to the sport.
 + instructors (array[Instructor], optional) - List of all instructors who teach the sport.
 + categoryName (string) - Name of the sport category.
++ description (string) - Description of the sport.
 
 ### SportPrice (object)
 + currencyCode (string) - International code of the currency for this price.
@@ -14158,7 +14159,8 @@ ri
     + members
         + `TIME_LINE_WEEK` - for activities with fixed schedule 
         + `TIME_LINE_DAY` - for activities with open schedule 
-        
++ ion (string) - Description of the activity.      
+
 ### Icon (object)
 + id (string) - Unique identifier of the icon.
 + nameBlack (string) - Name of the icon in a black variant. It can be retrieved from URL: **https://reservation.grandrelax.cz/media/images/pictograms/{nameBlack}**
