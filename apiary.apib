@@ -12171,6 +12171,7 @@ In this group are informations corresponding to club's **center**, like objects 
 
 + [Get all objects in center](#all_objects)
 + [Get occupancy of entrance object](#entrance_occupancy)
++ [Get sales](#sales)
 
 ## Get all objects in center [/api/1.0/center/objects]
 <a name="all_objects"></a>
@@ -12255,6 +12256,79 @@ In this group are informations corresponding to club's **center**, like objects 
                     }
                 ]
             }
+
+## Sales [/api/1.0/center/sales{?startDate,endDate}]
+<a name="sales"></a>
+
++ Parameters
+    + startDate (date, optional, `2025-10-14`) ... Start date for retrieving sales. If endDate is provided, the default start date is today minus 31 days. If not, the period is the last 31 days up to today.
+    + endDate (date, optional, `2025-10-18`) ... End date for retrieving sales. If startDate is provided, the default end date is today. If not, the period is the last 31 days up to today.
+
+### Get sales of center [GET]
+
+    Returns sales of center for (max) 31 days. It can be called with token with type client_credentials only.
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+
++ Response 200 (application/json)
+
+    + Attributes (Sales)
+    
+    + Body
+
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "rows": 2,
+                        "sales": [
+                            {
+                                "soldDate": "2025-11-19T14:50:08.361+0100",
+                                "customer": "Kristýna Kozlovská",
+                                "label": "Expirace depositu",
+                                "paymentType": "v hotovosti",
+                                "priceWithoutVat": 107.44,
+                                "vat": 0.21,
+                                "priceWithVat": 130.00,
+                                "currency": "Kč",
+                                "accountNumber": "1111202500000234aa",
+                                "paidByDeposit": true,
+                                "cashRegisterId": "P001",
+                                "voucherNumber": null,
+                                "soldBy": "system"
+                            },
+                            {
+                                "soldDate": "2025-11-19T14:50:08.361+0100",
+                                "customer": "Kristýna Kozlovská",
+                                "label": "Deposit",
+                                "paymentType": "v hotovosti",
+                                "priceWithoutVat": -130.00,
+                                "vat": 0,
+                                "priceWithVat": -130.00,
+                                "currency": "Kč",
+                                "accountNumber": "1111202500000234aa",
+                                "paidByDeposit": false,
+                                "cashRegisterId": "P001",
+                                "voucherNumber": null,
+                                "soldBy": "system"
+                            }
+                        ]
+                    }
+                ]
+            }
+              
               
 # Group Users
 <a name="users"></a>
@@ -14516,3 +14590,25 @@ ri
 + qrAccessCodeIsSet (boolean) - true if the customer already has a qr access code in the DB
 + canChangeNow (boolean) - true if the customer can set/reset the main device, i.e. whether he can declare this device as the main one (either he has not set one yet, or the number of days has already expired since the last setting on another device)
 + userHasProfilePhotoSet (boolean) - true if the customer has a profile photo set when required, or when qrProfilePhotoRequired = false
+
+### Sales (object)
++ data (array[SalesResult]) - List of result blocks for the given query (e.g. per center or filter).
+
+### SalesResult (object)
++ rows (number) - Total number of sale items (rows) in this result.
++ sales (array[SaleItem]) - List of individual sold items in the selected period.
+
+### SaleItem (object)
++ soldDate (string) - Date and time when the item was sold. Uses JSON datetime format (e.g. `2025-11-18T14:53:14.448+0100`).
++ customer (string) - Name of the customer to whom the bill / item belongs.
++ label (string) - Description of the sold item as shown on the bill (e.g. `1x měření In Body 270`).
++ paymentType (string) - Payment method used to pay the bill (e.g. `v hotovosti`, `kartou`).
++ priceWithoutVat (number) - Item price excluding VAT.
++ vat (number) - VAT rate as a decimal (e.g. `0.21` for 21% VAT).
++ priceWithVat (number) - Item price including VAT.
++ currency (string) - Currency of the bill (e.g. `CZK`).
++ accountNumber (string) - Internal bill number in the system.
++ paidByDeposit (boolean) - Indicates whether the item was paid from the customer’s deposit (`true`).
++ cashRegisterId (string) - Identifier of the cash register on which the bill was issued.
++ voucherNumber (string) - Voucher number used for this payment, if any. `null` if no voucher was used.
++ soldBy (string) - Login of the staff member who registered the sale.
