@@ -409,9 +409,16 @@ For more information on services follow the subsections:
 + [Price list](#price_list)
 + [Data privacy](#privacy)
 + [Members section](#members_section)
++ [All company branches](#company_branches)
++ [Is company branch active](#company_branch_active)
++ [Company branch photo](#company_branch_photo)
 
-## Contact [/api/1.0/contact]
+## Contact [/api/1.0/contact{?companyBranchId}]
 <a name="contact"></a>
+
++ Parameters
+    + companyBranchId (string, optional, `ae21a6f9c0a8003c7616e8652c557c9a`) ... Selected company branch id.
+
 ### Get contact information [GET]
 Returns contact information of the club.
 
@@ -637,8 +644,11 @@ Returns [paginated collection](#responsePagination) of all news published by the
                 "nextPageHref": null
             }
 
-## Latest news [/api/1.0/news/latest]
+## Latest news [/api/1.0/news/latest{?companyBranchId}]
 <a name="latest_news"></a>
+
++ Parameters
+    + companyBranchId (string, optional, `ae21a6f9c0a8003c7616e8652c557c9a`) ... Selected company branch id.
 
 ### Get latest news [GET]
 Returns collection of latest news published by the club. The maximum number of returned news is configured by the club. 
@@ -867,6 +877,120 @@ Returns Members section defined by the club.
                 ]
             }
             
+## All company branches [/api/1.0/company-branch]
+<a name="company_branches"></a>
+
+### Get company branches [GET]
+Returns company branches defined by the club. Chosen company branch decides which items (season tickets, memberships, schedule items, news, contact info) can user see/buy.
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+
++ Response 200 (application/json)
+
+    + Attributes (CompanyBranches) 
+        
+    + Body
+
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "companyBranches": [
+                            {
+                                "id": "adf25d76c0a8003c09c8309e4572e0ae",
+                                "name": "Clubspire - Centrum",
+                                "fullAddress": "Václavské nám. 12, 110 00 Praha 1",
+                                "phoneNumber": "+420123456789",
+                                "email": "centrum@clubspire.cz",
+                                "web": "clubspire.cz"
+                            },
+                            {
+                                "id": "f6d1f375c0a8003c1a262196e27f48ea",
+                                "name": "Clubspire - Pisárky",
+                                "fullAddress": "Pisárky 32, 12345 Brno",
+                                "phoneNumber": "+420 123 456 789",
+                                "email": "pisarkybrno@clubspire.cz",
+                                "web": "pisarkybrno.clubspire.cz"
+                            },
+                            {
+                                "id": "ae21a6f9c0a8003c7616e8652c557c9a",
+                                "name": "Clubspire - Smíchov",
+                                "fullAddress": "Nádražní 45, 150 00 Praha 5",
+                                "phoneNumber": "+420987654321",
+                                "email": "smichov@clubspire.cz",
+                                "web": "smichov.clubspire.cz"
+                            }
+                        ]
+                    }
+                ]
+            }
+
+## Is company branch active [/api/1.0/company-branch/{?companyBranchId}/is-active]
+<a name="company_branch_active"></a>
+
++ Parameters
+    + companyBranchId (string, `ae21a6f9c0a8003c7616e8652c557c9a`) ... Company branch id.
+
+### Is company branch active [GET]
+Returns if provided company branch is still active.
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+
++ Response 200 (application/json)
+
+    + Attributes (object) 
+        + value (boolean) - true if this company branch is active
+        
+    + Body
+
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "value": true
+                    }
+                ]
+            }
+
+## Company branch photo [/api/1.0/company-branch/{?companyBranchId}/photo]
+<a name="company_branch_photo"></a>
+
++ Parameters
+    + companyBranchId (string, `ae21a6f9c0a8003c7616e8652c557c9a`) ... Company branch id.
+
+### Get company branch photo [GET]
+Returns company branch photo.
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+
++ Response 200 (image)
+
+            
 # Group My account
 <a name="my_account"></a>
 Customers can buy credit that can be used for paying for their reservations.
@@ -905,6 +1029,7 @@ This section documents all services providing information about account of authe
 + [Payment info to purchase a voucher](#payment_info_vouchers)
 + [Buy voucher by deposit](#buy_voucher_by_deposit)
 + [Buy voucher by epayment](#buy_voucher_by_epayment)
++ [Is some season ticket for one time entry purchasable by customer](#some_season_ticket_for_entrance_purchasable_by_customer)
 
 ## My deposit [/api/1.0/accounts/my/deposit]
 <a name="my_deposit"></a>
@@ -1277,8 +1402,12 @@ Returns a detailed information about history of memberships of authenticated use
               ]
             }
 
-## Is some membership purchasable by customer [/api/1.0/accounts/my/customer-groups/new/enabled]
+## Is some membership purchasable by customer [/api/1.0/accounts/my/customer-groups/new/enabled{?companyBranchId}]
 <a name="some_membership_purchasable_by_customer"></a>
+
++ Parameters
+    + companyBranchId (string, optional, `ae21a6f9c0a8003c7616e8652c557c9a`) ... Selected company branch id.
+    
 ### Is some membership purchasable by customer [GET]
 Checks if logged customer can buy at least one type of membership
 
@@ -1309,8 +1438,12 @@ Checks if logged customer can buy at least one type of membership
               }
             }
 
-## All salable memberships  [/api/1.0/customer-groups]
+## All salable memberships  [/api/1.0/customer-groups{?companyBranchId}]
 <a name="salable_memberships"></a>
+
++ Parameters
+    + companyBranchId (string, optional, `ae21a6f9c0a8003c7616e8652c557c9a`) ... Selected company branch id.
+
 ### All salable memberships [GET]
 Get all salable membership for creating a membership form. 
 
@@ -1496,8 +1629,12 @@ Get all salable membership for creating a membership form.
                 ]
             }
             
-## Refresh salable memberships  [/api/1.0/customer-groups/refresh]
+## Refresh salable memberships [/api/1.0/customer-groups/refresh{?companyBranchId}]
 <a name="refresh_salable_memberships"></a>
+
++ Parameters
+    + companyBranchId (string, optional, `ae21a6f9c0a8003c7616e8652c557c9a`) ... Selected company branch id.
+
 ### Refresh salable memberships [POST]
 Refresh salable memberships in membership form after discount code was applied. 
 
@@ -2212,14 +2349,18 @@ Returns a detailed information about history of season ticket packages of authen
                       "shared": false,
                       "expireSoon": false
                     }
-                  ]P
+                  ]
                 }
               ]
              }
              
 
-## Is some season ticket purchasable by customer [/api/1.0/accounts/my/season-tickets/new/enabled]
+## Is some season ticket purchasable by customer [/api/1.0/accounts/my/season-tickets/new/enabled{?companyBranchId}]
 <a name="some_season_ticket_purchasable_by_customer"></a>
+
++ Parameters
+    + companyBranchId (string, optional, `ae21a6f9c0a8003c7616e8652c557c9a`) ... Selected company branch id.
+    
 ### Is some season ticket purchasable by customer [GET]
 Checks if logged customer can buy at least one type of season ticket
 
@@ -2251,8 +2392,12 @@ Checks if logged customer can buy at least one type of season ticket
             }
 
 
-## All salable season tickets  [/api/1.0/season-tickets]
+## All salable season tickets  [/api/1.0/season-tickets{?companyBranchId}]
 <a name="salable_season_tickets"></a>
+
++ Parameters
+    + companyBranchId (string, optional, `ae21a6f9c0a8003c7616e8652c557c9a`) ... Selected company branch id.
+    
 ### All salable season tickets [GET]
 Get all salable season tickets for creating a season ticket form. 
 
@@ -5832,7 +5977,42 @@ Returns paymentEntity with a url of the payment gate.
                     }
                 ]
             } 
- 
+
+## Is some season ticket for entrance purchasable by customer [/api/1.0/accounts/my/season-tickets/one-time-entrance/new/enabled{?companyBranchId}]
+<a name="some_season_ticket_for_entrance_purchasable_by_customer"></a>
+
++ Parameters
+    + companyBranchId (string, optional, `ae21a6f9c0a8003c7616e8652c557c9a`) ... Selected company branch id.
+    
+### Is some season ticket for entrance purchasable by customer [GET]
+Checks if logged customer can buy at least one type of season ticket for entrance
+
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+            
++ Response 200 (application/json)
+
+    + Attributes (object) 
+        + value (boolean) - true if currently logged customer can purchase at least one type of season ticket for entrance
+
+    + Body
+    
+            {
+              "message": {
+                "httpStatus": 200,
+                "type": "INFO",
+                "code": null,
+                "clientMessage": null,
+                "verboseMessage": null,
+                "docUri": null
+              },
+              "data": {
+                "value": true  
+              }
+            } 
  
 # Group Activities
 <a name="activities"></a>
@@ -5984,8 +6164,12 @@ Example of day activities: bowling, tennis, squash, badminton etc.
                 ]
             }
 
-## Week activities [/api/1.0/activities/week]
+## Week activities [/api/1.0/activities/week{?companyBranchId}]
 <a name="week_activities"></a>
+
++ Parameters
+    + companyBranchId (string, optional, `ae21a6f9c0a8003c7616e8652c557c9a`) ... Selected company branch id.
+
 ### Get week activities [GET]
 Returns a collection of all **week** activities that can be booked online. Week activities are scheduled for fixed time in timetable. Thus customers can only choose the number of persons when creating a reservation.
 
@@ -13525,9 +13709,12 @@ For more information on services follow the subsections:
 + [Get day tabs](#get_day_tabs)
 + [Get week tabs](#get_week_tabs)
 
-## Get day tabs [/api/1.0/tabs/day]
+## Get day tabs [/api/1.0/tabs/day{?companyBranchId}]
 <a name="get_day_tabs"></a>
   
++ Parameters
+    + companyBranchId (string, optional, `ae21a6f9c0a8003c7616e8652c557c9a`) ... Selected company branch id.
+
 ### Get day tabs [GET]
 
 + Request (application/json)
@@ -13602,9 +13789,12 @@ For more information on services follow the subsections:
                 ]
             }
 
-## Get week tabs [/api/1.0/tabs/week]
+## Get week tabs [/api/1.0/tabs/week{?companyBranchId}]
 <a name="get_week_tabs"></a>
 
++ Parameters
+    + companyBranchId (string, optional, `ae21a6f9c0a8003c7616e8652c557c9a`) ... Selected company branch id.
+    
 ### Get week tabs [GET]
 + Request (application/json)
     + Headers
@@ -14612,3 +14802,14 @@ ri
 + cashRegisterId (string) - Identifier of the cash register on which the bill was issued.
 + voucherNumber (string) - Voucher number used for this payment, if any. `null` if no voucher was used.
 + soldBy (string) - Login of the staff member who registered the sale.
+
+### CompanyBranches (object)
++ companyBranches (array[CompanyBranch]) - List of company branches defined by the club.
+
+### CompanyBranch (object)
++ id (string) - Unique identifier of the branch.
++ name (string) - Display name of the branch (e.g. Clubspire gym - Vinohrady).
++ fullAddress (string) - Full postal address of the branch (street, ZIP, city).
++ phoneNumber (string) - Contact phone number for the branch.
++ email (string) - Contact email address for the branch.
++ web (string) - Website or subdomain of the branch (e.g. clubspire.cz).
