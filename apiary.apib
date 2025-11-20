@@ -1651,7 +1651,8 @@ Refresh salable memberships in membership form after discount code was applied.
             {
                 "selectedMembershipId": "cb035011c0a8463200a2b960749b3625",
                 "selectedTypeIndex": 0
-                "discountCode": "leto30"
+                "discountCode": "leto30",
+                "companyBranchId": "ae21a6f9c0a8003c7616e8652c557c9a"
             }
             
 + Response 200 (application/json)
@@ -3249,7 +3250,9 @@ Refresh salable season tickets in season ticket form after discount code was app
  
             {
                 "selectedSeasonTicketTypeId": "eec20c80c0a800ae533756ccff33e3d8",
-                "discountCode": "leto30"
+                "discountCode": "leto30",
+                "companyBranchId": "ae21a6f9c0a8003c7616e8652c557c9a",
+                "forOneTimeEntry": true
             }
             
 + Response 200 (application/json)
@@ -13506,7 +13509,12 @@ Method returns all necessary settings to ensure compatibility with the connected
                         "qrScreenOnlyOneDevice": true,
                         "qrProfilePhotoRequired": true,
                         "registrationUnder18Text": "Tento soubor vyplněný zákonným zástupcem přineste s sebou v den dokončení registrace: https://google.com/file.pdf",
-                        "registrationUnder18EnglishText": "Bring this file, filled out by your legal representative, with you on the day of registration completion: https://google.com/file.pdf"
+                        "registrationUnder18EnglishText": "Bring this file, filled out by your legal representative, with you on the day of registration completion: https://google.com/file.pdf",
+                        "termsEnabled": true,
+                        "multipleCompanyBranchesSet": true,
+                        "termsEnabled": true,
+                        "offlineQRCodeInvisible": true,
+                        "openHoursEnabled": true
                     }
                 ]
             }
@@ -14019,10 +14027,12 @@ Sets current device as main. QrAccessCode from response is later used for authen
 + applyCodeMessage (string) - Message displayed after trying to apply a discount code.
 + applyCodeResult (number) - 1 if discount code applied correctly. 0 if not.
 + discountCode (string) - Applied discount code.
-ri
+
 ### RefreshSeasonTicketForm (object)
 + selectedSeasonTicketTypeId (string) - Id of selected season ticket type
-+ discountCode (string)
++ discountCode (string) - Applied discount code
++ companyBranchId (string) - Selected company branch
++ forOneTimeEntry (boolean) - If form with season ticket for one time entry is refreshing
 
 ### MembershipForm (object)
 + membershipList (array[Membership]) - List of memberships which a logged user can buy
@@ -14040,7 +14050,8 @@ ri
 ### RefreshMembershipForm (object)
 + selectedMembershipId (string) - Id of selected membership. 
 + selectedTypeIndex (string) - Index of selected type of membership.
-+ discountCode (string)
++ discountCode (string) - Applied discount code
++ companyBranchId (string) - Selected company branch
 
 ### Membership (object)
 + id (string) - Unique Id identifying the membership
@@ -14172,6 +14183,10 @@ ri
 + qrProfilePhotoRequired (boolean)
 + registrationUnder18Text (string)
 + registrationUnder18EnglishText (string)
++ termsEnabled (boolean)
++ multipleCompanyBranchesSet (boolean)
++ offlineQRCodeInvisible (boolean)
++ openHoursEnabled (boolean)
 
 ### User credentials authorization (object)
 + `grant_type` (required, string) - Value MUST be set to "password".
