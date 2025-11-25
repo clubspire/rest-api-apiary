@@ -1232,6 +1232,7 @@ Returns a detailed information about membership of authenticated user.
                 {
                   "metaInfo": null,
                   "id": "4879948dc0a8020200a1fc5de47a9685",
+                  "memberGroupId": "870ef994das5020200b49c326f8aaa4f",
                   "title": "Splatkove clenstvi",
                   "price": {
                     "currencyCode": "CZK",
@@ -1386,6 +1387,7 @@ Returns a detailed information about history of memberships of authenticated use
                 {
                   "metaInfo": null,
                   "id": "92a43434c0a84632009124e976232919",
+                  "memberGroupId": "870ef994das5020200b49c326f8aaa4f",
                   "title": "Kino Klub",
                   "price": {
                     "currencyCode": "CZK",
@@ -14530,7 +14532,8 @@ Sets current device as main. QrAccessCode from response is later used for authen
 + price (Price) - Transaction amount
 
 ### My Membership (object)
-+ id (string) - Id of the membership
++ id (string) - Id of the membership group
++ memberGroupId (string) - Id of the specific membership
 + title (string) - Name of the membership
 + price (Price) - Price of the membership. Could be `null` if the membership is for free. See **Price type** for detailed information about Price.
 + validFrom (string) - Date from which the membership is valid. See [JSON date serialization](#serialization) for detailed information about date formats.
