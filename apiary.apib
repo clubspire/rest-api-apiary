@@ -13932,6 +13932,7 @@ The second way is to limit the QR screen to only customers with an uploaded prof
 
 + [Check QR code access](#check_qr_code_access)
 + [Set new main device](#set_new_main_device)
++ [Get current server time](#get_current_server_time)
 
 ## Check QR code access [/api/1.0/qr-access]
 <a name="check_qr_code_access"></a>
@@ -14015,6 +14016,43 @@ Sets current device as main. QrAccessCode from response is later used for authen
                     }
                 ]
             }           
+
+## Get current server time [/api/1.0/qr-access/current-time]
+<a name="get_current_server_time"></a>
+
+Gets current server time as Unix timestamp in milliseconds (milliseconds since Unix epoch, Jan 1, 1970 UTC).
+
+### Get current server time [GET]
+
++ Request (application/json)
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+    
+
++ Response 200 (application/json)
+
+    + Attributes (CurrentTime)
+    
+    + Body 
+
+            {
+                "message": {
+                    "httpStatus": 200,
+                    "type": "INFO",
+                    "code": null,
+                    "clientMessage": null,
+                    "verboseMessage": null,
+                    "docUri": null
+                },
+                "data": [
+                    {
+                        "metaInfo": null,
+                        "value": "1770388372053"
+                    }
+                ]
+            }           
+
 
 ## Data Structures
 
@@ -14798,6 +14836,9 @@ Sets current device as main. QrAccessCode from response is later used for authen
 + qrAccessCodeIsSet (boolean) - true if the customer already has a qr access code in the DB
 + canChangeNow (boolean) - true if the customer can set/reset the main device, i.e. whether he can declare this device as the main one (either he has not set one yet, or the number of days has already expired since the last setting on another device)
 + userHasProfilePhotoSet (boolean) - true if the customer has a profile photo set when required, or when qrProfilePhotoRequired = false
+
+### CurrentTime (object)
++ value (number) - server time as Unix timestamp in milliseconds (milliseconds since Unix epoch, Jan 1, 1970 UTC)
 
 ### Sales (object)
 + data (array[SalesResult]) - List of result blocks for the given query (e.g. per center or filter).
