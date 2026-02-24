@@ -12496,7 +12496,9 @@ In this group are informations corresponding to club's **center**, like objects 
                                 "paidByDeposit": true,
                                 "cashRegisterId": "P001",
                                 "voucherNumber": null,
-                                "soldBy": "system"
+                                "soldBy": "system",
+                                "count": 1,
+                                "unitPriceWithoutVat": 107.44,
                             },
                             {
                                 "soldDate": "2025-11-19T14:50:08.361+0100",
@@ -12511,7 +12513,9 @@ In this group are informations corresponding to club's **center**, like objects 
                                 "paidByDeposit": false,
                                 "cashRegisterId": "P001",
                                 "voucherNumber": null,
-                                "soldBy": "system"
+                                "soldBy": "system",
+                                "count": 2,
+                                "unitPriceWithoutVat": -65.00,
                             }
                         ]
                     }
@@ -14861,6 +14865,8 @@ Gets current server time as Unix timestamp in milliseconds (milliseconds since U
 + cashRegisterId (string) - Identifier of the cash register on which the bill was issued.
 + voucherNumber (string) - Voucher number used for this payment, if any. `null` if no voucher was used.
 + soldBy (string) - Login of the staff member who registered the sale.
++ count (number) - Count of items.
++ unitPriceWithoutVat (number) - Price for one unit of this item.
 
 ### CompanyBranches (object)
 + companyBranches (array[CompanyBranch]) - List of company branches defined by the club.
