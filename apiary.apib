@@ -2395,11 +2395,12 @@ Checks if logged customer can buy at least one type of season ticket
             }
 
 
-## All salable season tickets  [/api/1.0/season-tickets{?companyBranchId}]
+## All salable season tickets  [/api/1.0/season-tickets{?companyBranchId,oneTimeEntrance}]
 <a name="salable_season_tickets"></a>
 
 + Parameters
     + companyBranchId (string, optional, `ae21a6f9c0a8003c7616e8652c557c9a`) ... Selected company branch id.
+    + oneTimeEntrance (bool, optional, true) ... True if season tickets for one time entry are requested (afterwards price can be zero). 
     
 ### All salable season tickets [GET]
 Get all salable season tickets for creating a season ticket form. 
