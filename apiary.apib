@@ -1226,7 +1226,7 @@ Returns information whether charging was successful.
                 "clubspireVoucherCode": "4367124772"
             }
             
-    + Response 200 (application/json)
++ Response 200 (application/json)
 
         
 ## My memberhips [/api/1.0/accounts/my/customer-groups]
@@ -2478,7 +2478,7 @@ Checks if logged customer can buy at least one type of season ticket
 
 + Parameters
     + companyBranchId (string, optional, `ae21a6f9c0a8003c7616e8652c557c9a`) ... Selected company branch id.
-    + oneTimeEntrance (bool, optional, true) ... True if season tickets for one time entry are requested (afterwards price can be zero). 
+    + oneTimeEntrance (bool, optional, `true`) ... True if season tickets for one time entry are requested - afterwards price can be zero. 
     
 ### All salable season tickets [GET]
 Get all salable season tickets for creating a season ticket form. 
@@ -5761,8 +5761,8 @@ Returns paymentEntity with a url of the payment gate.
                 "clientMessage": null,
                 "verboseMessage": null,
                 "docUri": null
-              },
-              "data": [
+            },
+            "data": [
                    {
                         "metaInfo": null,
                         "orderNumber": "3091463609",
@@ -5824,7 +5824,7 @@ Returns detailed information about season ticket of given **id**. Authenticated 
                   "expireSoon": false,
                   "historyItems": []
                 }
-              ]
+]
             }
             
 ## My valid vouchers [/api/1.0/voucher/my/valid]
@@ -12401,7 +12401,7 @@ Returns impulses count of season ticket(s) that can be used to reservation payme
     
             {
                 "message": {
-res                    "httpStatus": 200,
+                    "httpStatus": 200,
                     "type": "INFO",
                     "code": null,
                     "clientMessage": null,
