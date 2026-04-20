@@ -943,7 +943,7 @@ Returns company branches defined by the club. Chosen company branch decides whic
     + companyBranchId (string, `ae21a6f9c0a8003c7616e8652c557c9a`) ... Company branch id.
 
 ### Is company branch active [GET]
-Returns if provided company branch is still active.
+Returns information whether provided company branch is still active.
 
 + Request (application/json)
     + Headers
@@ -1006,7 +1006,8 @@ their reservations. Reservation price can be expressed in money or impulses. Eac
 This section documents all services providing information about account of authenticated user. For more information follow the subsections:
 + [My deposit](#my_deposit)
 + [My deposit history](#my_deposit_history)
-+ [Buy deposit](#buy_deposit)
++ [Charge deposit by epayment](#buy_deposit)
++ [Charge deposit by voucher](#buy_deposit_by_voucher)
 + [My season tickets](#my_season_tickets)
 + [My season tickets history](#my_season_tickets_history)
 + [Is some season ticket purchasable by customer](#some_season_ticket_purchasable_by_customer)
@@ -1159,9 +1160,10 @@ Returns a detailed information about history of deposit flow of authenticated us
               ]
             }
             
-## Buy deposit [/api/1.0/deposit/new/pay]
+## Charge deposit by epayment [/api/1.0/deposit/new/pay]
 <a name="buy_deposit"></a>
-### Charge deposit [POST]
+
+### Charge deposit by epayment [POST]
 Returns paymentEntity with a url of the payment gate. 
 
 + Request (application/json)
@@ -1202,6 +1204,30 @@ Returns paymentEntity with a url of the payment gate.
                     }
                 ]
             }
+        
+## Charge deposit by voucher [/api/1.0/deposit/new/pay-by-voucher]
+<a name="buy_deposit_by_voucher"></a>
+
+### Charge deposit by voucher [POST]
+Returns information whether charging was successful. 
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+            
+    + Attributes (Payment)
+            
+    + Body
+
+            { 
+                "amount":"500", 
+                "clubspireVoucherCode": "4367124772"
+            }
+            
+    + Response 200 (application/json)
+
         
 ## My memberhips [/api/1.0/accounts/my/customer-groups]
 <a name="my_memberships"></a>
@@ -9069,6 +9095,8 @@ For more information on services follow the subsections:
 + [Create and pay reservation by epayment](#create_and_pay_reservation_by_epayment)
 + [Pay reservation by season ticket](#pay_reservation_by_season_ticket)
 + [Create and pay reservation by season ticket](#create_and_pay_reservation_by_season_ticket)
++ [Pay reservation by voucher](#pay_reservation_by_voucher)
++ [Create and pay reservation by voucher](#create_and_pay_reservation_by_voucher)
 + [My reservations](#my_reservations)
 + [My actual reservations](#my_actual_reservations)
 + [My actual unrealized reservations](#my_actual_unrealized_reservations)
@@ -9302,7 +9330,8 @@ If invalid data is provided error message is returned to the caller. For complet
                         "temporary": false,
                         "temporaryValidTo": null,
                         "moreSports": false,
-                        "discountCode": null
+                        "discountCode": null,
+                        "clubspireVoucherCode": null
                     }
                 ]
             }
@@ -9510,7 +9539,8 @@ If invalid data is provided error message is returned to the caller. For complet
                     "temporary": false,
                     "temporaryValidTo": null,
                     "moreSports": false,
-                    "discountCode": null
+                    "discountCode": null,
+                    "clubspireVoucherCode": null
                     }
                 }
               ]
@@ -9740,7 +9770,8 @@ If invalid data is provided error message is returned to the caller. For complet
                         "temporary": false,
                         "temporaryValidTo": null,
                         "moreSports": false,
-                        "discountCode": null
+                        "discountCode": null,
+                        "clubspireVoucherCode": null
                     }
                 ]
             }
@@ -9974,7 +10005,8 @@ If invalid data is provided error message is returned to the caller. For complet
                     "temporary": false,
                     "temporaryValidTo": null,
                     "moreSports": false,
-                    "discountCode": null
+                    "discountCode": null,
+                    "clubspireVoucherCode": null
                   }
                 }
               ]
@@ -10134,7 +10166,8 @@ Recommended way to create new reservation is to follow these steps:
                       "temporary": false,
                       "temporaryValidTo": null,
                       "moreSports": false,
-                      "discountCode": null
+                      "discountCode": null,
+                      "clubspireVoucherCode": null
                     }
                   ]
                 }
@@ -10323,7 +10356,8 @@ If some error occurs during retreiving reservation data error message is returne
                             "temporary": false,
                             "temporaryValidTo": null,
                             "moreSports": false,
-                            "discountCode": null
+                            "discountCode": null,
+                            "clubspireVoucherCode": null
                         }
                     ]
                 }
@@ -10482,7 +10516,8 @@ Fee amount is defined by the club and depends on sport, customer group of the us
                           "temporary": false,
                           "temporaryValidTo": null,
                           "moreSports": false,
-                          "discountCode": null
+                          "discountCode": null,
+                          "clubspireVoucherCode": null
                       }
                   ]
               }
@@ -10678,7 +10713,8 @@ If some error occurs during retreiving reservation data error message is returne
                     "temporary": false,
                     "temporaryValidTo": null,
                     "moreSports": false,
-                    "discountCode": null
+                    "discountCode": null,
+                    "clubspireVoucherCode": null
                   }
                 }
               ]
@@ -10875,7 +10911,8 @@ If some error occurs during retreiving reservation data error message is returne
                     "temporary": false,
                     "temporaryValidTo": null,
                     "moreSports": false,
-                    "discountCode": null
+                    "discountCode": null,
+                    "clubspireVoucherCode": null
                   }
                 }
               ]
@@ -10950,7 +10987,7 @@ If payment fails, for example due to low deposit balance, an error message is re
 |`error.payment.invalidData`                     |ERROR_RECOVERABLE|General message returned if provided data was not valid. More detailed information might be retrieved from `fieldErrors` attribute of the response message.|
 |`error.reservation.notOwner`                    |ERROR_FATAL      |Returned if authenticated user is not the owner of reservation.|
 |`error.reservation.find.failed`                 |ERROR_FATAL      |Returned if reservation does not exist.|
-|`error.payment.reservation. alreadyPaid`        |ERROR_FATAL      |Returned if user tries to pay reservation that has already been paid|
+|`error.payment.reservation.alreadyPaid`         |ERROR_FATAL      |Returned if user tries to pay reservation that has already been paid|
 
 + Request (application/json)
 
@@ -10990,7 +11027,7 @@ If payment fails, for example due to low deposit balance, an error message is re
 |`error.payment.invalidData`                     |ERROR_RECOVERABLE|General message returned if provided data was not valid. More detailed information might be retrieved from `fieldErrors` attribute of the response message.|
 |`error.reservation.notOwner`                    |ERROR_FATAL      |Returned if authenticated user is not the owner of reservation.|
 |`error.reservation.find.failed`                 |ERROR_FATAL      |Returned if reservation does not exist.|
-|`error.payment.reservation. alreadyPaid`        |ERROR_FATAL      |Returned if user tries to pay reservation that has already been paid|
+|`error.payment.reservation.alreadyPaid`         |ERROR_FATAL      |Returned if user tries to pay reservation that has already been paid|
 
 + Request (application/json)
 
@@ -11165,7 +11202,7 @@ If payment fails, for example due to low deposit balance, an error message is re
 |`error.payment.invalidData`                         |ERROR_RECOVERABLE|General message returned if provided data was not valid. More detailed information might be retrieved from `fieldErrors` attribute of the response message.|
 |`error.reservation.notOwner`                        |ERROR_FATAL      |Returned if authenticated user is not the owner of reservation.|
 |`error.reservation.find.failed`                     |ERROR_FATAL      |Returned if reservation does not exist.|
-|`error.payment.reservation. alreadyPaid`            |ERROR_FATAL      |Returned if user tries to pay reservation that has already been paid|
+|`error.payment.reservation.alreadyPaid`             |ERROR_FATAL      |Returned if user tries to pay reservation that has already been paid|
 
 + Request (application/json)
 
@@ -11205,7 +11242,7 @@ If payment fails, an error message is returned to the caller. For complete list 
 |`error.payment.invalidData`                       |ERROR_RECOVERABLE|General message returned if provided data was not valid. More detailed information might be retrieved from `fieldErrors` attribute of the response message.|
 |`error.reservation.notOwner`                      |ERROR_FATAL      |Returned if authenticated user is not the owner of reservation.|
 |`error.reservation.find.failed`                   |ERROR_FATAL      |Returned if reservation does not exist.|
-|`error.payment.reservation. alreadyPaid`          |ERROR_FATAL      |Returned if user tries to pay reservation that has already been paid|
+|`error.payment.reservation.alreadyPaid`           |ERROR_FATAL      |Returned if user tries to pay reservation that has already been paid|
 
 + Request (application/json)
 
@@ -11240,6 +11277,114 @@ If payment fails, an error message is returned to the caller. For complete list 
             } 
   
 + Response 200 (application/json)
+
+
+## Pay reservation by voucher [/api/1.0/reservations/{id}/voucher/pay]
+<a name="pay_reservation_by_voucher"></a>      
++ Parameters
+  + id (required, string, `1a29b593c0a8020200bb84d63c88b96c`)...Id of the reservation to pay.
+
+### Pay reservation by voucher [PUT]
+
+Pays reservation of given **id** by voucher. Authenticated user must be the owner of the reservation. 
+
+If payment fails, an error message is returned to the caller. For complete list of message codes and their meanings see [Response messages](#response_messages). 
+
+<a name="response_messages12"></a>
+#### Response messages
+| Code                                               |Type             |Description                                                                                                                  |
+|----------------------------------------------------|:----------------|:-----------------------------------------------|
+|`success.paymentForReservation.voucher`             |INFO             |Returned if reservation has been paid by voucher successfully.|
+|`error.payment.notEnabled`                          |ERROR_FATAL      |Returned if payments are disabled by the club.|
+|`error.payment.voucher.disabled`                    |ERROR_FATAL      |Returned if payments by voucher are disabled by the club.|
+|`error.payment.unsupportedType`                     |ERROR_RECOVERABLE|Returned if unsupported payment type was provided. Currently supported payment types are: DEPOSIT|
+|`error.payment.notProceed`                          |ERROR_FATAL      |General message returned if payment failed due to unexpected error.|
+|`error.payment.internalError`                       |ERROR_FATAL      |General message returned if payment failed due to unexpected internal error.|
+|`error.payment.invalidData`                         |ERROR_RECOVERABLE|General message returned if provided data was not valid. More detailed information might be retrieved from `fieldErrors` attribute of the response message.|
+|`error.reservation.notOwner`                        |ERROR_FATAL      |Returned if authenticated user is not the owner of reservation.|
+|`error.reservation.find.failed`                     |ERROR_FATAL      |Returned if reservation does not exist.|
+|`error.payment.reservation.alreadyPaid`             |ERROR_FATAL      |Returned if user tries to pay reservation that has already been paid|
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+            
+    + Attributes (Payment)
+    
+    + Body
+        
+            {
+                "type":"VOUCHER",
+                "discountCode": "sleva30",
+                "clubspireVoucherCode": "4367124772"
+            }
+  
++ Response 200 (application/json)
+
+
+## Create and pay reservation by voucher [/api/1.0/reservations/new/voucher/pay]
+<a name="create_and_pay_reservation_by_voucher"></a>      
+
+### Create and pay reservation by voucher [POST]
+
+Creates and pays reservation by customer's voucher. Authenticated user must be the owner of the reservation. 
+If payment fails, an error message is returned to the caller. For complete list of message codes and their meanings see [Response messages](#response_messages). 
+
+<a name="response_messages12"></a>
+#### Response messages
+| Code                                             |Type             |Description                                                                                                                  |
+|--------------------------------------------------|:----------------|:-----------------------------------------------|
+|`success.reservation.createdAndPaidByVoucher`     |INFO             |Returned if reservation has been created and paid by deposit successfully.|
+|`error.payment.notEnabled`                        |ERROR_FATAL      |Returned if payments are disabled by the club.|
+|`error.payment.seasonTicket.disabled`             |ERROR_FATAL      |Returned if payments by season tickets are disabled by the club.|
+|`error.payment.unsupportedType`                   |ERROR_RECOVERABLE|Returned if unsupported payment type was provided. Currently supported payment types are: DEPOSIT|
+|`error.payment.notProceed`                        |ERROR_FATAL      |General message returned if payment failed due to unexpected error.|
+|`error.payment.internalError`                     |ERROR_FATAL      |General message returned if payment failed due to unexpected internal error.|
+|`error.payment.invalidData`                       |ERROR_RECOVERABLE|General message returned if provided data was not valid. More detailed information might be retrieved from `fieldErrors` attribute of the response message.|
+|`error.reservation.notOwner`                      |ERROR_FATAL      |Returned if authenticated user is not the owner of reservation.|
+|`error.reservation.find.failed`                   |ERROR_FATAL      |Returned if reservation does not exist.|
+|`error.payment.reservation.alreadyPaid`           |ERROR_FATAL      |Returned if user tries to pay reservation that has already been paid|
+
++ Request (application/json)
+
+    + Headers
+    
+            Authorization: Bearer r8t9y5d8-1234-3214-12ab-a1t2re325s5w
+            
+    + Attributes(Reservation)
+
+    + Body
+
+            {
+                "instructorId": "-1",
+                "sportId": "f27e8234c0a83332534017e05b879988",
+                "objectId": "54b8cab3c0a8463201cbe89d20857a81",
+                "personCount": 8,   
+                "startTime": "2016-12-07T18:00:00.000+0200",
+                "endTime": "2016-12-07T19:30:00.000+0200",
+                "note": "note",
+                "emailNotificationBeforeMinutes": null,
+                "smsNotificationBeforeMinutes": null,  
+                "pushNotificationBeforeMinutes": null,          
+                "paymentType":null,
+                "substitute":false,
+                "substituteForAnyObjectOfAreal":false,
+                "createReservationFromSubstitute":false,
+                "substituteAcceptanceMinutesBefore":0,
+                "substituteEmailNotification":false,
+                "substituteSMSNotification":false,
+                "substitutePushNotification":false,
+                "temporary": false,
+                "temporaryValidTo": null,
+                "moreSports": false,
+                "discountCode": "sleva30",
+                "clubspireVoucherCode": "4367124772"
+            } 
+
++ Response 200 (application/json)
+
 
 ## My reservations [/api/1.0/reservations/my]
 <a name="my_reservations"></a>
@@ -13591,7 +13736,9 @@ Method returns all necessary settings to ensure compatibility with the connected
                         "multipleCompanyBranchesSet": true,
                         "termsEnabled": true,
                         "offlineQRCodeInvisible": true,
-                        "openHoursEnabled": true
+                        "openHoursEnabled": true,
+                        "depositPayableByVoucherEnabled": true,
+                        "reservationCanBePaidWithVoucherEnabled": true
                     }
                 ]
             }
@@ -14215,6 +14362,7 @@ Gets current server time as Unix timestamp in milliseconds (milliseconds since U
     + IT
     + ES
 + discountCode (string) - Applied discount code.
++ clubspireVoucherCode (string) - Number of applied voucher to pay with.
 
 ### PaymentResponse (object)
 + orderNumber (string) - Order number for check status of payment.
@@ -14305,6 +14453,8 @@ Gets current server time as Unix timestamp in milliseconds (milliseconds since U
 + multipleCompanyBranchesSet (boolean)
 + offlineQRCodeInvisible (boolean)
 + openHoursEnabled (boolean)
++ depositPayableByVoucherEnabled (boolean)
++ reservationCanBePaidWithVoucherEnabled (boolean)
 
 ### User credentials authorization (object)
 + `grant_type` (required, string) - Value MUST be set to "password".
@@ -14582,7 +14732,8 @@ Gets current server time as Unix timestamp in milliseconds (milliseconds since U
 + temporary (boolean) - Whether the reservation is temporary. Temporary reservation is valid only for short time, typically for 30 minutes. If the reservation is not paid within the limit it is automatically removed. `True` if the reservation is temporary, `false` otherwise. Always `false` for new reservation.
 + temporaryValidTo (string) - Date and time till which the temporary reservation is valid. After this time it is automatically removed. Always `null` for new reservation. See [JSON date serialization](#serialization) for detailed information about date formats.
 + moreSports (boolean) - Wheter the reservation is over 2 reservation zones.
-+ discountCode (string) - Applicated discount code for this resevation.
++ discountCode (string) - Applied discount code for this resevation.
++ clubspireVoucherCode (string) - Number of applied voucher for this resevation.
 
 ### Sport (object)
 + id (string) - Unique identifier of the sport.
